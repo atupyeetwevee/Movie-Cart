@@ -13,7 +13,7 @@ function Sidebar() {
         </div>
       </div>
       <img
-        src="atu2.png"
+        src="toon1.png"
         alt="Profile"
         className="w-9 h-9 rounded-full object-cover"
       />
