@@ -3,9 +3,9 @@ import Sidebar from "../components/Sidebar"
 
 function HomePage() {
   return (
-    <div className="flex gap-15 w-screen min-h-screen mx-auto py-10 px-10 text-white">
+    <div className="flex gap-15 min-h-screen mx-auto py-10 px-10 text-white">
         <Sidebar />
-        <div>
+        <div className="w-screen">
             <Navbar />
             <div>the page</div>
         </div>
