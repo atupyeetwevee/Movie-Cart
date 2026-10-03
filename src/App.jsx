@@ -1,13 +1,16 @@
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 import HomePage from "./pages/HomePage"
 import AppLayout from "./layout/AppLayout"
 import MoviesPage from "./pages/MoviesPage"
 import SeriesPage from "./pages/SeriesPage"
 import BookmarkPage from "./pages/BookmarkPage"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+
+const queryClient = new QueryClient()
 
 function App() {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout/>}>
@@ -18,7 +21,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </>
+    </QueryClientProvider>
   )
 }
 
