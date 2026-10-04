@@ -29,7 +29,7 @@ function Sidebar() {
         {menu.map((item) => {
           const Icon = item.icon;
           return(
-            <NavLink to={item.path}>
+            <NavLink key={item.title} to={item.path}>
               <Icon size={25} />
             </NavLink>
           )
