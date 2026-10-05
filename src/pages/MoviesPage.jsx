@@ -22,9 +22,9 @@ function MoviesPage() {
     <div className="py-4">
         <h1>Popular Movies</h1>
 
-        <div className="grid grid-cols-4 gap-10 pt-8">
+        <div className="grid md:grid-cols-4 grid-cols-1 md:gap-10 pt-4">
         {data?.Search?.map((movie) => (
-            <div>
+            <div className="flex flex-col items-center pb-8">
                 <p key={movie.imdbID}>
                     {movie.Title}
                 </p>

@@ -22,15 +22,15 @@ function Sidebar() {
   ]
   return (
    <div className="p-4">
-     <div className=" flex flex-col justify-between h-full bg-secondary rounded-lg px-4 py-4 ">
-      <div className="flex flex-col gap-20">
+     <div className="flex md:flex-col justify-between items-center h-full bg-secondary rounded-lg px-4 py-4 ">
+      <div className="flex md:flex-col items-center md:gap-20 gap-10">
         <MdArtTrack className="text-4xl"/>
-        <div className="flex flex-col gap-4">
+        <div className="flex md:flex-col gap-4">
         {menu.map((item) => {
           const Icon = item.icon;
           return(
             <NavLink key={item.title} to={item.path}>
-              <Icon size={25} />
+              <Icon md:size={25} size={20} />
             </NavLink>
           )
         })}
@@ -39,7 +39,7 @@ function Sidebar() {
       <img
         src="toon1.png"
         alt="Profile"
-        className="w-9 h-9 rounded-full object-cover"
+        className="md:w-9 w-7 md:h-9 h-7 rounded-full object-cover"
       />
     </div>
    </div>

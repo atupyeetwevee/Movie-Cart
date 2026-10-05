@@ -4,7 +4,7 @@ import Sidebar from "../components/Sidebar"
 
 function AppLayout() {
   return (
-    <div className="flex w-screen h-screen text-white">
+    <div className="md:flex w-screen h-screen text-white">
       <Sidebar />
 
       <div className="flex flex-col">
