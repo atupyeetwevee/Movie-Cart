@@ -19,21 +19,23 @@ function MoviesPage() {
   console.log(data);
 
   return (
-    <div>
-      <h1>Popular Movies</h1>
+    <div className="py-4">
+        <h1>Popular Movies</h1>
 
-      {data?.Search?.map((movie) => (
-        <div>
-            <p key={movie.imdbID}>
-                {movie.Title}
-            </p>
+        <div className="grid grid-cols-4 gap-10 pt-8">
+        {data?.Search?.map((movie) => (
+            <div>
+                <p key={movie.imdbID}>
+                    {movie.Title}
+                </p>
 
-            <img
-                src={movie.Poster}
-                alt={movie.Title}
-            />
-        </div>
+                <img className=""
+                    src={movie.Poster}
+                    alt={movie.Title}
+                />
+            </div>
       ))}
+      </div>
     </div>
   )
 }

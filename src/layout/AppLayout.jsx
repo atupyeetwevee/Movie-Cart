@@ -10,7 +10,7 @@ function AppLayout() {
       <div className="flex flex-col">
         <Navbar />
         
-        <div className="p-4 overflow-y-auto no-scrollbar">
+        <div className="p-4 overflow-y-auto">
           <Outlet />
         </div>
       </div>

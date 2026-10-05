@@ -4,6 +4,6 @@ import { searchMovies } from "../services/movies.service";
 export const useSearchMovies = () => {
   return useQuery({
     queryKey: ["searchTerm"],
-    queryFn: () => searchMovies("Batman"),
+    queryFn: () => searchMovies("Kissing Booth"),
   });
 };
