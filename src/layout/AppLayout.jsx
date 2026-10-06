@@ -14,7 +14,7 @@ function AppLayout() {
         <Navbar search={search} setSearch={setSearch} />
         
         <div className="p-4 overflow-y-auto">
-          <Outlet />
+          <Outlet context={{ search }}/>
         </div>
       </div>
     </div>

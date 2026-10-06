@@ -1,7 +1,9 @@
+import { useOutletContext } from "react-router-dom";
 import { useSearchMovies } from "../hooks/useMovies";
 
-function MoviesPage({search}) {
-    const {
+function MoviesPage() {
+  const { search } = useOutletContext();
+  const {
     data,
     isLoading,
     isError,

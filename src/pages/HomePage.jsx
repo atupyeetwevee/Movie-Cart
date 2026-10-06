@@ -1,9 +1,4 @@
-import { useUsers } from "../hooks/useUsers"
-
 function HomePage() {
- const {data:users} = useUsers();
-
- console.log("HAPAAA", users)
 
   return (
     <>
