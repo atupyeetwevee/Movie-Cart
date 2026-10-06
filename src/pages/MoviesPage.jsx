@@ -1,12 +1,12 @@
 import { useSearchMovies } from "../hooks/useMovies";
 
-function MoviesPage() {
+function MoviesPage({search}) {
     const {
     data,
     isLoading,
     isError,
     error,
-  } = useSearchMovies();
+  } = useSearchMovies(search);
 
   if (isLoading) {
     return <p>Loading movies...</p>;
@@ -24,8 +24,8 @@ function MoviesPage() {
 
         <div className="grid md:grid-cols-4 grid-cols-1 md:gap-10 pt-4">
         {data?.Search?.map((movie) => (
-            <div className="flex flex-col items-center pb-8">
-                <p key={movie.imdbID}>
+            <div key={movie.imdbID} className="flex flex-col items-center pb-8">
+                <p >
                     {movie.Title}
                 </p>
 
