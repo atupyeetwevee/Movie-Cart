@@ -26,12 +26,12 @@ function MoviesPage() {
 
         <div className="grid md:grid-cols-4 grid-cols-1 md:gap-10 pt-4">
         {data?.Search?.map((movie) => (
-            <div key={movie.imdbID} className="flex flex-col items-center pb-8">
+            <div key={movie.imdbID} className="flex gap-5 hover:border hover:border-gray-400 rounded-lg p-4">
                 <p >
-                    {movie.Title}
+                    {movie.Title}-{movie.Year}
                 </p>
-
-                <img className=""
+                
+                <img className="h-50 w-30"
                     src={movie.Poster}
                     alt={movie.Title}
                 />
