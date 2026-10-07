@@ -10,7 +10,7 @@ function AppLayout() {
     <div className="md:flex w-screen h-screen text-white">
       <Sidebar />
 
-      <div className="flex flex-col">
+      <div className="flex flex-col flex-1 min-w-0">
         <Navbar search={search} setSearch={setSearch} />
         
         <div className="p-4 overflow-y-auto">
