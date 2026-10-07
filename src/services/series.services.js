@@ -4,7 +4,7 @@ export const searchSeries = async (searchTerm) => {
     const response = await api.get("/",{
         params: {
             s: searchTerm,
-            type: "movie",
+            type: "series",
         }
     });
   return response.data
