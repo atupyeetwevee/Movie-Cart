@@ -11,5 +11,5 @@ const api = axios.create(
     },
   }
 );
-console.log(api)
+
 export default api;
