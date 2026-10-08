@@ -3,6 +3,7 @@ import { useSearchMovies } from "../hooks/useMovies";
 
 function MoviesPage() {
   const { search } = useOutletContext();
+  
   const {
     data,
     isLoading,
