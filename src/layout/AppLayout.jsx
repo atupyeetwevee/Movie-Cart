@@ -7,7 +7,7 @@ function AppLayout() {
   const [search, setSearch] = useState("");
 
   return (
-    <div className="md:flex w-screen h-screen text-white">
+    <div className="md:flex w-screen h-screen">
       <Sidebar />
 
       <div className="flex flex-col flex-1 min-w-0">

@@ -26,12 +26,12 @@ function SeriesPage() {
 
         <div className="grid md:grid-cols-4 grid-cols-1 md:gap-10 pt-4">
         {data?.Search?.map((series) => (
-            <div key={series.imdbID} className="flex gap-5 hover:border hover:border-gray-400 rounded-lg p-4">
+            <div key={series.imdbID} className="flex flex-col gap-5 hover:border hover:border-gray-400 rounded-lg p-4">
                 <p >
                     {series.Title}-{series.Year}
                 </p>
                 
-                <img className="h-50 w-30"
+                <img className="h-60 w-full"
                     src={series.Poster}
                     alt={series.Title}
                 />

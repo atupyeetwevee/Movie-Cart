@@ -24,13 +24,13 @@ function Sidebar() {
    <div className="p-4">
      <div className="flex md:flex-col justify-between items-center h-full bg-secondary rounded-lg px-4 py-4 ">
       <div className="flex md:flex-col items-center md:gap-20 gap-10">
-        <MdArtTrack className="text-4xl"/>
-        <div className="flex md:flex-col gap-4">
+        <MdArtTrack className="text-4xl text-red-400"/>
+        <div className="flex md:flex-col gap-6">
         {menu.map((item) => {
           const Icon = item.icon;
           return(
-            <NavLink key={item.path} to={item.path}>
-              <Icon md:size={25} size={20} />
+            <NavLink key={item.path} to={item.path} className={({isActive}) => isActive? "text-white" : "text-gray-400"}>
+              <Icon md:size={25} size={28} />
             </NavLink>
           )
         })}
