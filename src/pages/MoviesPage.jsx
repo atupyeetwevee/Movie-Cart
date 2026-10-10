@@ -1,5 +1,6 @@
 import { useOutletContext } from "react-router-dom";
 import { useSearchMovies } from "../hooks/useMovies";
+import { LuBookmark } from "react-icons/lu";
 
 function MoviesPage() {
   const { search } = useOutletContext();
@@ -26,7 +27,7 @@ function MoviesPage() {
 
         <div className="grid md:grid-cols-4 grid-cols-1 md:gap-10 pt-4">
         {data?.Search?.map((movie) => (
-            <div key={movie.imdbID} className="flex flex-col gap-5 hover:border hover:border-gray-400 rounded-lg p-4">
+            <><div key={movie.imdbID} className="flex flex-col gap-5 hover:border hover:border-gray-400 rounded-lg p-4">
                 <p >
                     {movie.Title}-{movie.Year}
                 </p>
@@ -36,6 +37,10 @@ function MoviesPage() {
                     alt={movie.Title}
                 />
             </div>
+            <div className="">
+              <LuBookmark />
+            </div>
+          </>
       ))}
       </div>
     </div>
