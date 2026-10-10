@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MdArtTrack, MdBookmark, MdLiveTv, MdLocalMovies, MdWindow } from "react-icons/md"
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Sidebar() {
   const [profileMenu, setProfileMenu] = useState(false)
@@ -58,8 +58,12 @@ function Sidebar() {
       {profileMenu && (
         <div className="absolute left-21 bottom-5 text-white h-20 w-25 text-center bg-amber-400">
           <ul>
-            <li>Settings</li>
-            <li>Logout</li>
+            <li className="hover:text-amber-300">
+              <Link to="">SETTINGS</Link>
+            </li>
+            <li>
+              <Link to="">LOG OUT</Link>
+            </li>
           </ul>
         </div>
       )}
