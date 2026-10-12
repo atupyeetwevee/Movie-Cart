@@ -1,10 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { searchMovies } from "../services/movies.service";
+import { moviesApi } from "../services/movies.service";
 
-export const useSearchMovies = (searchTerm) => {
+export const useMovies = ({ search, type, year }) => {
   return useQuery({
-    queryKey: ["searchTerm", searchTerm],
-    queryFn: () => searchMovies(searchTerm),
-    enabled: !!searchTerm,
+    queryFn: () => moviesApi({ search, type, year }),
+    queryKey: ["movies", search, type, year],
   });
 };

@@ -1,31 +1,72 @@
+import { useState } from "react";
+import { useMovies } from "../hooks/useMovies";
+
 function HomePage() {
+  const [popular, setPopular] = useState("spider");
+  const [recommended, setRecommended] = useState("love");
+
+  const { data: popularMovies, isLoading: isLoadingPopularMovies } = useMovies({
+    search: popular,
+  });
+
+  const { data: recommendedMovies, isLoading: isLoadingRecommendedMovies } =
+    useMovies({ search: recommended });
+
+  const isLoading = isLoadingPopularMovies || isLoadingRecommendedMovies;
+
+  if (isLoading) {
+    return <p>Loading movies...</p>;
+  }
 
   return (
     <>
-        <div className="">
-            <h1>Trending</h1>
-            <div className="grid md:grid-cols-3 grid-cols-1 gap-5 pt-4">
-              <div className="border border-white/20 rounded-lg shadow-lg shadow-gray-800"><img src="toon1.png" /></div>  
-              <div className="border border-white/20 rounded-lg shadow-lg shadow-gray-800"><img src="toon1.png" /></div>
-              <div className="border border-white/20 rounded-lg shadow-lg shadow-gray-800"><img src="toon1.png" /></div>
-            </div>
-          </div>
+      <div className="">
+        <h1>Trending</h1>
 
-          <div className="pt-8">
-            <h1>Recommended for you</h1>
-            <div className="grid md:grid-cols-4 grid-cols-2 gap-5 pt-4">
-              <div className="border border-white/20 rounded-lg shadow-lg shadow-gray-800"><img src="toon1.png" /></div>  
-              <div className="border border-white/20 rounded-lg shadow-lg shadow-gray-800"><img src="toon1.png" /></div>
-              <div className="border border-white/20 rounded-lg shadow-lg shadow-gray-800"><img src="toon1.png" /></div>
-              <div className="border border-white/20 rounded-lg shadow-lg shadow-gray-800"><img src="toon1.png" /></div>  
-              <div className="border border-white/20 rounded-lg shadow-lg shadow-gray-800"><img src="toon1.png" /></div>
-              <div className="border border-white/20 rounded-lg shadow-lg shadow-gray-800"><img src="toon1.png" /></div>  
-              <div className="border border-white/20 rounded-lg shadow-lg shadow-gray-800"><img src="toon1.png" /></div>
-              <div className="border border-white/20 rounded-lg shadow-lg shadow-gray-800"><img src="toon1.png" /></div>
+        <div className="grid md:grid-cols-3 grid-cols-1 gap-5 pt-4">
+          {popularMovies.Search.map((movie) => (
+            <div
+              key={movie.imdbID}
+              className="flex flex-col gap-5 hover:border hover:border-gray-400 rounded-lg p-4"
+            >
+              <p>
+                {movie.Title}-{movie.Year}
+              </p>
+
+              <img
+                className="h-60 w-full object-cover"
+                src={movie.Poster}
+                alt={movie.Title}
+              />
             </div>
+          ))}
         </div>
+      </div>
+
+      <div className="pt-8">
+        <h1>Recommended for you</h1>
+
+        <div className="grid md:grid-cols-4 grid-cols-2 gap-5 pt-4">
+          {recommendedMovies.Search.map((movie) => (
+            <div
+              key={movie.imdbID}
+              className="flex flex-col gap-5 hover:border hover:border-gray-400 rounded-lg p-4"
+            >
+              <p>
+                {movie.Title}-{movie.Year}
+              </p>
+
+              <img
+                className="h-60 w-full object-cover"
+                src={movie.Poster}
+                alt={movie.Title}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
     </>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;

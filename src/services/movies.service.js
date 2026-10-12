@@ -1,11 +1,13 @@
-import api from "../lib/axios"
+import api from "../lib/axios";
 
-export const searchMovies = async (searchTerm) => {
-    const response = await api.get("/", {
-        params: {
-            s: searchTerm,
-            type: "movie",
-        },
-    });
-    return response.data
-}
+export const moviesApi = async ({ search, type, year }) => {
+  const response = await api.get("/", {
+    params: {
+      s: search,
+      type: type,
+      year: year,
+    },
+  });
+
+  return response.data;
+};
