@@ -5,11 +5,13 @@ import { useOutletContext } from "react-router-dom";
 function HomePage() {
   const { search } = useOutletContext();
 
-  const [popular, setPopular] = useState("spider");
-  const [recommended, setRecommended] = useState("love");
+  const currentYear = new Date().getFullYear
+  const [popular] = useState("spider");
+
+  const [recommended] = useState("love");
 
   const { data: popularMovies, isLoading: isLoadingPopularMovies } = useMovies({
-    search: popular,
+    search: popular, type: "movies", year: currentYear,
   });
 
   const { data: recommendedMovies, isLoading: isLoadingRecommendedMovies } =
