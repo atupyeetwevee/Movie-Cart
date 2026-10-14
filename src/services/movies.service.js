@@ -6,6 +6,8 @@ export const moviesApi = async ({ search, type, year }) => {
       s: search,
       type: type,
       year: year,
+      i: imdbID,
+      plot: "short",
     },
   });
 
