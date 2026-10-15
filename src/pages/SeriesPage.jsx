@@ -1,31 +1,73 @@
 import { useOutletContext } from "react-router-dom";
-import { useSearchSeries } from "../hooks/useSeries";
+import { useState } from "react";
+import { useSeries } from "../hooks/useSeries";
 
 function SeriesPage() {
   const { search } = useOutletContext();
+  const [popular] = useState("from");
+
   const {
-    data,
-    isLoading,
+    data: popularSeries,
+    isLoading: isLoadingPopularSeries,
+  } = useSeries({search: popular, type: "series"});
+
+  const {
+    data: searchResults,
+    isLoading: isLoadingSearch,
     isError,
-    error,
-  } = useSearchSeries(search);
+  } = useSeries({search: search?.trim() || "", type: "series"});
 
-  if (isLoading) {
-    return <p>Loading movies...</p>;
+  if (search?.trim()) {
+    if (isLoadingSearch){
+      return<p>Searching movies...</p>
+    }
+
+    if (isError){
+      return<p>Failed to search movies. Please try again</p>
+    }
+
+    const seriesMovies = searchResults?.Search || [];
+
+    return (
+      <div>
+        <h1 className="text-xl font-bold">
+          Search results for "{search}"
+        </h1>
+
+        {seriesMovies.length === 0 ? (
+          <p className="pt-4">No series found.</p>
+        ) : (
+          <div className="grid md:grid-cols-4 grid-cols-2 gap-5 pt-4">
+            {seriesMovies.map((item) => (
+              <div
+                key={item.imdbID}
+                className="flex flex-col gap-3 rounded-lg p-4 hover:border hover:border-gray-400"
+              >
+                <img
+                  className="h-60 w-full object-cover"
+                  src={item.Poster}
+                  alt={item.Title}
+                />
+                <p>
+                  {item.Title} - {item.Year}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    );
   }
 
-  if (isError) {
-    return <p>{error.message}</p>;
+  if (isLoadingPopularSeries){
+    return <p>Loading movies...</p>
   }
-
-  console.log(data);
-
   return (
     <div className="py-4">
         <h1>Popular Series</h1>
 
         <div className="grid md:grid-cols-4 grid-cols-1 md:gap-10 pt-4">
-        {data?.Search?.map((series) => (
+        {(popularSeries?.Search || []).map((series) => (
             <div key={series.imdbID} className="flex flex-col gap-5 hover:border hover:border-gray-400 rounded-lg p-4">
                 <p >
                     {series.Title}-{series.Year}

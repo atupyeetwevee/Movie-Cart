@@ -1,25 +1,71 @@
 import { useOutletContext } from "react-router-dom";
 import { useMovies } from "../hooks/useMovies";
 import { LuBookmark } from "react-icons/lu";
+import { useState } from "react";
 
 function MoviesPage() {
   const { search } = useOutletContext();
-  const { data, isLoading, isError, error } = useMovies({ search });
+  const [popular] = useState("fault")
 
-  if (isLoading) {
-    return <p>Loading movies...</p>;
+  const { data: popularMovies, isLoading: isLoadingPopularMovies } = useMovies({ search: popular });
+
+  const {
+    data: searchResults,
+    isLoading: isLoadingSearch,
+    isError,
+  } = useMovies({ search: search?.trim() || "" });
+
+  if (search?.trim()) {
+    if (isLoadingSearch) {
+      return <p>Searching movies...</p>;
+    }
+
+    if (isError) {
+      return <p>Failed to search movies. Please try again.</p>;
+    }
+
+    const movies = searchResults?.Search || [];
+
+    return (
+      <div>
+        <h1 className="text-xl font-bold">
+          Search results for "{search}"
+        </h1>
+
+        {movies.length === 0 ? (
+          <p className="pt-4">No movies found.</p>
+        ) : (
+          <div className="grid md:grid-cols-4 grid-cols-2 gap-5 pt-4">
+            {movies.map((movie) => (
+              <div
+                key={movie.imdbID}
+                className="flex flex-col gap-3 rounded-lg p-4 hover:border hover:border-gray-400"
+              >
+                <img
+                  className="h-60 w-full object-cover"
+                  src={movie.Poster}
+                  alt={movie.Title}
+                />
+                <p>
+                  {movie.Title} - {movie.Year}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    );
   }
 
-  if (isError) {
-    return <p>{error.message}</p>;
+  if(isLoadingPopularMovies){
+    return<p>Loading movies...</p>
   }
-
   return (
     <div className="py-4">
       <h1>Popular Movies</h1>
 
       <div className="grid md:grid-cols-4 grid-cols-1 md:gap-10 pt-4">
-        {data?.Search?.map((movie) => (
+        {(popularMovies?.Search || []).map((movie) => (
           <>
             <div
               key={movie.imdbID}
@@ -35,9 +81,9 @@ function MoviesPage() {
                 alt={movie.Title}
               />
             </div>
-            <div className="">
+            {/* <div className="">
               <LuBookmark />
-            </div>
+            </div> */}
           </>
         ))}
       </div>
