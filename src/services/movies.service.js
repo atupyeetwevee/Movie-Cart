@@ -6,9 +6,11 @@ export const moviesApi = async ({ search, type, year }) => {
       s: search,
       type: type,
       year: year,
-      plot: "short",
+      i: imdbID,
+      plot: "full",
     },
   });
 
   return response.data;
 };
+

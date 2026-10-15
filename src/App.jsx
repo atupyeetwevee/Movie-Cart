@@ -5,6 +5,7 @@ import MoviesPage from "./pages/MoviesPage"
 import SeriesPage from "./pages/SeriesPage"
 import BookmarkPage from "./pages/BookmarkPage"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import MovieDetailsPage from "./pages/MovieDetailsPage"
 
 const queryClient = new QueryClient()
 
@@ -18,6 +19,7 @@ function App() {
             <Route path="/movies" element={<MoviesPage />}/>
             <Route path="/series" element={<SeriesPage />}/>
             <Route path="/bookmark" element={<BookmarkPage />}/>
+            <Route path="/movie/:imdbID" element={<MovieDetailsPage />}/>
           </Route>
         </Routes>
       </BrowserRouter>

@@ -2,8 +2,11 @@ import { useOutletContext } from "react-router-dom";
 import { useMovies } from "../hooks/useMovies";
 import { LuBookmark } from "react-icons/lu";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function MoviesPage() {
+  const navigate = useNavigation();
+
   const { search } = useOutletContext();
   const [popular] = useState("fault")
 
@@ -39,6 +42,7 @@ function MoviesPage() {
             {movies.map((movie) => (
               <div
                 key={movie.imdbID}
+                onClick={() => navigate(`/movie/ ${movie.imdbID}`)}
                 className="flex flex-col gap-3 rounded-lg p-4 hover:border hover:border-gray-400"
               >
                 <img
