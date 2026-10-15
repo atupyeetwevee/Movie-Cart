@@ -38,18 +38,18 @@ function SeriesPage() {
           <p className="pt-4">No series found.</p>
         ) : (
           <div className="grid md:grid-cols-4 grid-cols-2 gap-5 pt-4">
-            {seriesMovies.map((item) => (
+            {seriesMovies.map((series) => (
               <div
-                key={item.imdbID}
+                key={series.imdbID}
                 className="flex flex-col gap-3 rounded-lg p-4 hover:border hover:border-gray-400"
               >
                 <img
                   className="h-60 w-full object-cover"
-                  src={item.Poster}
-                  alt={item.Title}
+                  src={series.Poster}
+                  alt={series.Title}
                 />
                 <p>
-                  {item.Title} - {item.Year}
+                  {series.Title} - {series.Year}
                 </p>
               </div>
             ))}
