@@ -6,8 +6,17 @@ export const moviesApi = async ({ search, type, year }) => {
       s: search,
       type: type,
       year: year,
-      i: imdbID,
       plot: "full",
+    },
+  });
+
+  return response.data;
+};
+
+export const moviesDetails = async (id) => {
+  const response = await api.get("/", {
+    params: {
+      i: id,
     },
   });
 

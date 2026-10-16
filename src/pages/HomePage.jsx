@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useMovies } from "../hooks/useMovies";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
-  const { search } = useOutletContext();
+    const navigate = useNavigate();
 
   const [popular, setPopular] = useState("secret");
   const [recommended, setRecommended] = useState("love");
@@ -15,54 +15,16 @@ function HomePage() {
   const { data: recommendedMovies, isLoading: isLoadingRecommendedMovies } =
     useMovies({ search: recommended });
 
-  const { data: searchResults, isLoading: isLoadingSearch, isError} 
-  = useMovies({ search: search?.trim() || ""});
-
-  if (search?.trim()){
-    if (isLoadingSearch){
-      return <p>Searching movies...</p>
-    }
-
-    if (isError){
-      return<p>Failed to search movies. Please try again.</p>
-    }
-
-    const movies = searchResults?.Search || [];
+  const isLoading = isLoadingPopularMovies || isLoadingRecommendedMovies;
     
-    return (
-      <div>
-        <h1 className="text-xl font-bold">
-          Search results for "{search}"
-        </h1>
-
-        {movies.length === 0 ? (
-          <p className="pt-4">No movies found.</p>
-        ) : (
-          <div className="grid md:grid-cols-4 grid-cols-2 gap-5 pt-4">
-            {movies.map((movie) => (
-              <div
-                key={movie.imdbID}
-                className="flex flex-col gap-3 rounded-lg p-4 hover:border hover:border-gray-400"
-              >
-                <img
-                  className="h-60 w-full object-cover"
-                  src={movie.Poster}
-                  alt={movie.Title}
-                />
-                <p>
-                  {movie.Title} - {movie.Year}
-                </p>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    );
+  const handleViewMovie = (id) => {
+      navigate(`/movie/${id}`)
   }
 
-  if (isLoadingPopularMovies || isLoadingRecommendedMovies){
-    return <p>Loading movies...</p>
-  }
+if (isLoading) {
+  return <div>Loading...</div>
+}
+ 
   return (
     <>
       <div className="">
@@ -72,6 +34,7 @@ function HomePage() {
           {(popularMovies?.Search || []).map((movie) => (
             <div
               key={movie.imdbID}
+              onClick={() => handleViewMovie(movie.imdbID)}
               className="flex flex-col gap-5 hover:border hover:border-gray-400 rounded-lg p-4"
             >
               <p>

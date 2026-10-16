@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function MoviesPage() {
-  const navigate = useNavigation();
+  const navigate = useNavigate();
 
   const { search } = useOutletContext();
   const [popular] = useState("fault")
@@ -29,6 +29,10 @@ function MoviesPage() {
 
     const movies = searchResults?.Search || [];
 
+    const handleViewMovie = (id) => {
+      navigate(`/movie/${id}`)
+    }
+
     return (
       <div>
         <h1 className="text-xl font-bold">
@@ -42,7 +46,7 @@ function MoviesPage() {
             {movies.map((movie) => (
               <div
                 key={movie.imdbID}
-                onClick={() => navigate(`/movie/ ${movie.imdbID}`)}
+                onClick={handleViewMovie(movie.imdbID)}
                 className="flex flex-col gap-3 rounded-lg p-4 hover:border hover:border-gray-400"
               >
                 <img
