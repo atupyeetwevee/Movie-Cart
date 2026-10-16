@@ -14,7 +14,7 @@ const MovieDetailsPage = () => {
   return (
     <>
       <div className="flex gap-5 bg-amber-300">
-        <div className="w-1/4 bg-red-200">{movie.poster}</div>
+        <div className="w-1/4 bg-red-200"><img /></div>
         <div className="w-3/4 flex flex-col bg-green-300">
           <h1 className="text-center">MOVIE TITLE</h1>
           <ul className="flex justify-evenly">
