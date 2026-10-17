@@ -19,7 +19,7 @@ export const moviesDetails = async (id) => {
       i: id,
     },
   });
-
   return response.data;
 };
+
 

@@ -6,6 +6,7 @@ const MovieDetailsPage = () => {
   const {id} = useParams()
 
   const {data:movie, isLoading} = useMovieDetails(id)
+  console.log("Movie data:", movie);
 
   if (isLoading) {
   return <div>Loading...</div>
@@ -14,14 +15,14 @@ const MovieDetailsPage = () => {
   return (
     <>
       <div className="flex gap-5 bg-amber-300">
-        <div className="w-1/4 bg-red-200"><img /></div>
+        <div className="w-1/4 bg-red-200"><img src={movie?.Poster} alt={movie?.Title} /></div>
         <div className="w-3/4 flex flex-col bg-green-300">
-          <h1 className="text-center">MOVIE TITLE</h1>
+          <h1 className="text-center">{movie?.Title}</h1>
           <ul className="flex justify-evenly">
-            <li>time</li>
-            <li>year</li>
-            <li>rate</li>
-            <li>logo</li>
+            <li>{movie?.Year}</li>
+            <li>{movie?.imdbRating}</li>
+            <li>{movie?.Runtime}</li>
+            <li>{movie?.Website}</li>
           </ul>
           <p className="text-center">PLOT</p>
           <div>

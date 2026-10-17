@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useMovies } from "../hooks/useMovies";
 import { useNavigate } from "react-router-dom";
+import { moviesApi } from "../services/movies.service";
 
 function HomePage() {
     const navigate = useNavigate();
@@ -20,6 +21,7 @@ function HomePage() {
   const handleViewMovie = (id) => {
       navigate(`/movie/${id}`)
   }
+
 
 if (isLoading) {
   return <div>Loading...</div>
