@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../components/Navbar"
-import Sidebar from "../components/Sidebar"
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 import { useState } from "react";
 
 function AppLayout() {
@@ -12,13 +12,13 @@ function AppLayout() {
 
       <div className="flex flex-col flex-1 min-w-0">
         <Navbar search={search} setSearch={setSearch} />
-        
+
         <div className="p-4 overflow-y-auto">
-          <Outlet context={{ search }}/>
+          <Outlet context={{ search }} />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default AppLayout;

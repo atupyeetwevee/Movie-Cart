@@ -1,31 +1,32 @@
 import { useState } from "react";
 import { useMovies } from "../hooks/useMovies";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 function HomePage() {
   const navigate = useNavigate();
 
-  const [popular, setPopular] = useState("secret");
-  const [recommended, setRecommended] = useState("love");
+  const { search } = useOutletContext();
+
+  const [popular] = useState("secret");
+  const [recommended] = useState("love");
 
   const { data: popularMovies, isLoading: isLoadingPopularMovies } = useMovies({
-    search: popular,
+    search: search || popular,
   });
 
   const { data: recommendedMovies, isLoading: isLoadingRecommendedMovies } =
-    useMovies({ search: recommended });
+    useMovies({ search: search || recommended });
 
   const isLoading = isLoadingPopularMovies || isLoadingRecommendedMovies;
-    
+
   const handleViewMovie = (id) => {
-      navigate(`/movie/${id}`)
+    navigate(`/movie/${id}`);
+  };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
-
-if (isLoading) {
-  return <div>Loading...</div>
-}
- 
   return (
     <>
       <div className="">
