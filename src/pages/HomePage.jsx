@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { useMovies } from "../hooks/useMovies";
 import { useNavigate } from "react-router-dom";
-import { moviesApi } from "../services/movies.service";
 
 function HomePage() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [popular, setPopular] = useState("secret");
   const [recommended, setRecommended] = useState("love");
@@ -60,6 +59,7 @@ if (isLoading) {
           {(recommendedMovies?.Search || []).map((movie) => (
             <div
               key={movie.imdbID}
+              onClick={() => handleViewMovie(movie.imdbID)}
               className="flex flex-col gap-5 hover:border hover:border-gray-400 rounded-lg p-4"
             >
               <p>

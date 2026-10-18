@@ -1,4 +1,3 @@
-import { useOutletContext } from "react-router-dom";
 import { useMovies } from "../hooks/useMovies";
 import { LuBookmark } from "react-icons/lu";
 import { useState } from "react";
@@ -7,31 +6,13 @@ import { useNavigate } from "react-router-dom";
 function MoviesPage() {
   const navigate = useNavigate();
 
-  const { search } = useOutletContext();
-  const [popular] = useState("fault")
+  const [popular, setPopular] = useState("fault")
 
   const { data: popularMovies, isLoading: isLoadingPopularMovies } = useMovies({ search: popular });
 
-  const {
-    data: searchResults,
-    isLoading: isLoadingSearch,
-    isError,
-  } = useMovies({ search: search?.trim() || "" });
-
-  if (search?.trim()) {
-    if (isLoadingSearch) {
-      return <p>Searching movies...</p>;
-    }
-
-    if (isError) {
-      return <p>Failed to search movies. Please try again.</p>;
-    }
-
-    const movies = searchResults?.Search || [];
-
-    const handleViewMovie = (id) => {
-      navigate(`/movie/${id}`)
-    }
+  const handleViewMovie = (id) => {
+    navigate(`/movie/${id}`)
+  }
 
     return (
       <div>
@@ -65,9 +46,9 @@ function MoviesPage() {
     );
   }
 
-  if(isLoadingPopularMovies){
-    return<p>Loading movies...</p>
-  }
+if(isLoading){
+  return<p>Loading movies...</p>
+}
   return (
     <div className="py-4">
       <h1>Popular Movies</h1>
