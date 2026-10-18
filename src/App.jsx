@@ -20,6 +20,7 @@ function App() {
             <Route path="/series" element={<SeriesPage />}/>
             <Route path="/bookmark" element={<BookmarkPage />}/>
             <Route path="/movie/:id" element={<MovieDetailsPage />}/>
+            <Route path="/series/:id" element={<MovieDetailsPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
