@@ -47,12 +47,6 @@ function Sidebar() {
             className="md:w-9 w-7 md:h-9 h-7 border border-amber-100 rounded-full object-cover"
           />
         </div>
-
-          {/* {profileMenu && (
-          <div
-            className="fixed inset-0 bg-white backdrop-blur-sm"
-          />
-        )} */}
       </div>
 
       {profileMenu && (

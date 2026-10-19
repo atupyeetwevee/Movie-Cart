@@ -14,9 +14,9 @@ const MovieDetailsPage = () => {
 
   return (
     <>
-      <div className="flex gap-15 px-4 py-4">
-        <div className="w-1/4"><img src={movie?.Poster} alt={movie?.Title} /></div>
-        <div className="w-3/4 flex flex-col gap-8">
+      <div className="md:flex gap-15 px-4 py-4">
+        <div className="md:w-1/4 "><img src={movie?.Poster} alt={movie?.Title} /></div>
+        <div className="md:w-3/4 flex flex-col gap-8 pt-5">
           <h1 className="md:text-4xl">{movie?.Title}</h1>
           <ul className="flex gap-8 md:text-2xl">
             <li>{movie?.Year}</li>
