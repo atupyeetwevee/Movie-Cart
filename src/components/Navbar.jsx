@@ -1,9 +1,11 @@
 import { LuSearch } from "react-icons/lu";
 
-function Navbar({search, setSearch}) {
+function Navbar({search, setSearch, showSearch}) {
   return (
     <div className="sticky top-0 py-8 p-4 bg-primary">
-       <div className="relative flex items-center border border-gray-100 md:w-1/2 w-full p-2 rounded-md">
+       
+      {showSearch && (
+        <div className="relative flex items-center border border-gray-100 md:w-1/2 w-full p-2 rounded-md">
           <LuSearch className="absolute left-3 text-xl"/>
           <input
             value={search} 
@@ -12,6 +14,8 @@ function Navbar({search, setSearch}) {
             className="pl-8 w-full outline-none"
         />
        </div>
+      )}
+
     </div>
   )
 };
