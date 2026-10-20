@@ -20,15 +20,22 @@ function RegisterPage() {
                     <legend className="text-left text-4xl uppercase px-8">Registration Form</legend>
                     
                     <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" 
+                    <input type="text" id="name" name="name" placeholder="Enter your Full Name"
                         {...register("name", { required: "Name is required" })}
                         className="py-2 px-2 rounded-2xl border border-gray-400" />
                         {errors.name && (
-                  <p className="text-xs text-red-500">{errors.name?.message}</p>
-                )}
+                            <p className="text-xs text-red-500">{errors.name?.message}</p>
+                        )}
                     
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" className="py-2 px-2 rounded-2xl border border-gray-400" />
+                    <input type="email" id="email" name="email" placeholder="example@gmail.com"
+                        {...register("email", { required: "Enter an email address", pattern: {
+                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Please enter a valid email address",}
+                        ,})}
+                        className="py-2 px-2 rounded-2xl border border-gray-400" />
+                        {errors.email && (
+                            <p className="text-xs text-red-500">{errors.email?.message}</p>
+                        )}
 
                     <label for="password">Password:</label>
                     <input type="password" id="pass" name="password" className="py-2 px-2 rounded-2xl border border-gray-400" /> 
