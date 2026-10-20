@@ -1,14 +1,31 @@
 
 function RegisterPage() {
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm();
+
+  const onSubmitForm = (formData) => {
+    console.log(formData);
+    reset();
+  };
+
   return (
     <div className="flex items-center justify-center text-white py-4 px-4">
        <div className="w-full max-w-2xl">
-         <form>
+         <form onSubmit={handleSubmit(onSubmitForm)}>
                 <fieldset className="flex flex-col space-y-4 py-4 px-4 border border-gray-400 rounded-2xl">
                     <legend className="text-left text-4xl uppercase px-8">Registration Form</legend>
                     
                     <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" className="py-2 px-2 rounded-2xl border border-gray-400" />
+                    <input type="text" id="name" name="name" 
+                        {...register("name", { required: "Name is required" })}
+                        className="py-2 px-2 rounded-2xl border border-gray-400" />
+                        {errors.name && (
+                  <p className="text-xs text-red-500">{errors.name?.message}</p>
+                )}
                     
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" className="py-2 px-2 rounded-2xl border border-gray-400" />
