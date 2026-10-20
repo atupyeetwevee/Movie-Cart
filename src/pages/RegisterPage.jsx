@@ -38,7 +38,12 @@ function RegisterPage() {
                         )}
 
                     <label for="password">Password:</label>
-                    <input type="password" id="pass" name="password" className="py-2 px-2 rounded-2xl border border-gray-400" /> 
+                    <input type="password" id="pass" name="password"
+                        {...register("password", { required: "Password is required" })}
+                        className="py-2 px-2 rounded-2xl border border-gray-400" /> 
+                        {errors.password && (
+                            <p className="text-xs text-red-500">{errors.password?.message}</p>
+                        )}
 
                     <button className="border border-gray-400 bg-secondary rounded-2xl px-2 py-2 w-1/2">REGISTER</button>
                 </fieldset>
