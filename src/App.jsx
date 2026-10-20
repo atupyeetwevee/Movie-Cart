@@ -6,6 +6,8 @@ import SeriesPage from "./pages/SeriesPage"
 import BookmarkPage from "./pages/BookmarkPage"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import MovieDetailsPage from "./pages/MovieDetailsPage"
+import RegisterPage from "./pages/RegisterPage"
+import LogInPage from "./pages/LogInPage"
 
 const queryClient = new QueryClient()
 

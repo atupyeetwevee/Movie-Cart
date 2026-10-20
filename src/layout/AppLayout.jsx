@@ -9,7 +9,8 @@ function AppLayout() {
 
   const showSearch = !(
     location.pathname.startsWith("/series/") ||
-    location.pathname.startsWith("/movie/")
+    location.pathname.startsWith("/movie/") ||
+    location.pathname.startsWith("/register")
   )
 
   return (
