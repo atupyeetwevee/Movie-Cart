@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 function RegisterPage() {
     const {
@@ -46,7 +47,9 @@ function RegisterPage() {
                             <p className="text-xs text-red-500">{errors.password?.message}</p>
                         )}
 
-                    <button type="submit" className="border border-gray-400 bg-secondary rounded-2xl px-2 py-2 w-1/2">REGISTER</button>
+                    <button type="submit" className="border border-gray-400 bg-secondary rounded-2xl px-2 py-2 w-1/2">SIGN-UP</button>
+                    <p>Already have an account <Link to="/login">Log In</Link></p>
+                    
                 </fieldset>
             </form>
        </div>

@@ -5,6 +5,7 @@ import { useState } from "react";
 
 function AppLayout() {
   const [search, setSearch] = useState("");
+  const [profileMenu, setProfileMenu] = useState(false)
   const location = useLocation();
 
   const showSearch = !(
@@ -14,9 +15,14 @@ function AppLayout() {
     location.pathname.startsWith("/login")
   )
 
+  const showSideBar = !(
+    location.pathname.startsWith("/register") ||
+    location.pathname.startsWith("/login")
+  )
+
   return (
     <div className="md:flex w-screen h-screen text-amber-50">
-      <Sidebar />
+      <Sidebar profileMenu={profileMenu} setProfileMenu={setProfileMenu} showSearch={showSideBar} />
 
       <div className="flex flex-col flex-1 min-w-0">
         <Navbar search={search} setSearch={setSearch} showSearch={showSearch} />

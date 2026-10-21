@@ -1,9 +1,8 @@
-import { useState } from "react";
 import { MdArtTrack, MdBookmark, MdLiveTv, MdLocalMovies, MdWindow } from "react-icons/md"
 import { Link, NavLink } from "react-router-dom";
 
-function Sidebar() {
-  const [profileMenu, setProfileMenu] = useState(false)
+function Sidebar({profileMenu, setProfileMenu, showSideBar}) {
+  
   const menu = [
     {
       icon: MdWindow,
@@ -24,7 +23,8 @@ function Sidebar() {
   ]
   return (
     <>
-      <div className="relative p-4 z-99">
+      {showSideBar && 
+        <div className="relative p-4 z-99">
         <div className="flex md:flex-col justify-between items-center h-full bg-secondary rounded-lg px-4 py-4 ">
           <div className="flex md:flex-col items-center md:gap-20 gap-10">
             <MdArtTrack className="text-4xl text-red-400"/>
@@ -47,7 +47,7 @@ function Sidebar() {
             className="md:w-9 w-7 md:h-9 h-7 border border-amber-100 rounded-full object-cover"
           />
         </div>
-      </div>
+      </div>}
 
       {profileMenu && (
         <div className="absolute left-21 bottom-4 py-2 text-white h-20 w-25 text-center bg-secondary">
@@ -56,7 +56,7 @@ function Sidebar() {
               <Link to="">SETTINGS</Link>
             </li>
             <li className="hover:text-amber-300">
-              <Link to="">LOG OUT</Link>
+              <Link to="/register">LOG OUT</Link>
             </li>
           </ul>
         </div>
