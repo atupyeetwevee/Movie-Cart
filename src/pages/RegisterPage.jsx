@@ -1,3 +1,4 @@
+import { useForm } from "react-hook-form";
 
 function RegisterPage() {
     const {
@@ -19,7 +20,7 @@ function RegisterPage() {
                 <fieldset className="flex flex-col space-y-4 py-4 px-4 border border-gray-400 rounded-2xl">
                     <legend className="text-left text-4xl uppercase px-8">Registration Form</legend>
                     
-                    <label for="name">Name:</label>
+                    <label htmlFor="name">Name:</label>
                     <input type="text" id="name" name="name" placeholder="Enter your Full Name"
                         {...register("name", { required: "Name is required" })}
                         className="py-2 px-2 rounded-2xl border border-gray-400" />
@@ -27,7 +28,7 @@ function RegisterPage() {
                             <p className="text-xs text-red-500">{errors.name?.message}</p>
                         )}
                     
-                    <label for="email">Email:</label>
+                    <label htmlFor="email">Email:</label>
                     <input type="email" id="email" name="email" placeholder="example@gmail.com"
                         {...register("email", { required: "Enter an email address", pattern: {
                             value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Please enter a valid email address",}
@@ -37,7 +38,7 @@ function RegisterPage() {
                             <p className="text-xs text-red-500">{errors.email?.message}</p>
                         )}
 
-                    <label for="password">Password:</label>
+                    <label htmlFor="password">Password:</label>
                     <input type="password" id="pass" name="password"
                         {...register("password", { required: "Password is required" })}
                         className="py-2 px-2 rounded-2xl border border-gray-400" /> 
@@ -45,7 +46,7 @@ function RegisterPage() {
                             <p className="text-xs text-red-500">{errors.password?.message}</p>
                         )}
 
-                    <button className="border border-gray-400 bg-secondary rounded-2xl px-2 py-2 w-1/2">REGISTER</button>
+                    <button type="submit" className="border border-gray-400 bg-secondary rounded-2xl px-2 py-2 w-1/2">REGISTER</button>
                 </fieldset>
             </form>
        </div>
