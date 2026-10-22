@@ -1,9 +1,10 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../lib/firebase";
 
 function RegisterPage() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -27,6 +28,7 @@ function RegisterPage() {
       alert("Welcome! Your account was created.");
 
       reset();
+      navigate("/");
     } catch (error) {
       console.error(error.code);
 
