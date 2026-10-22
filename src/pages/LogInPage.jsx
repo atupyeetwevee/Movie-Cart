@@ -1,49 +1,69 @@
-import { useForm } from "react-hook-form"
+// import { getAuth } from "firebase/auth";
+import { useForm } from "react-hook-form";
 
 function LogInPage() {
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors },
   } = useForm();
 
-   const onSubmitForm = (formData) => {
+  const onSubmitForm = (formData) => {
     console.log(formData);
     reset();
   };
 
   return (
     <div className="flex items-center justify-center text-white py-4 px-4">
-       <div className="w-full max-w-2xl">
-         <form onSubmit={handleSubmit(onSubmitForm)}>
-                <fieldset className="flex flex-col space-y-4 py-4 px-4 border border-gray-400 rounded-2xl">
-                    <legend className="text-left text-4xl uppercase px-8">Login Form</legend>
-                                
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" 
-                      {...register("email", { required: "Enter an email address", pattern: {
-                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Please enter a valid email address",}
-                      })}
-                      className="py-2 px-2 rounded-2xl border border-gray-400" />
-                      {errors.email && (
-                        <p className="text-xs text-red-500">{errors.email?.message}</p>
-                      )}
+      <div className="w-full max-w-2xl">
+        <form onSubmit={handleSubmit(onSubmitForm)}>
+          <fieldset className="flex flex-col space-y-4 py-4 px-4 border border-gray-400 rounded-2xl">
+            <legend className="text-left text-4xl uppercase px-8">
+              Login Form
+            </legend>
 
-                    <label htmlFor="password">Password:</label>
-                    <input type="password" id="pass" name="password" 
-                      {...register("password", { required: "Password is required" })}
-                      className="py-2 px-2 rounded-2xl border border-gray-400" />
-                      {errors.password && (
-                        <p className="text-xs text-red-500">{errors.password?.message}</p>
-                      )}
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              {...register("email", {
+                required: "Enter an email address",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Please enter a valid email address",
+                },
+              })}
+              className="py-2 px-2 rounded-2xl border border-gray-400"
+            />
+            {errors.email && (
+              <p className="text-xs text-red-500">{errors.email?.message}</p>
+            )}
 
-                    <button type="submit" className="border border-gray-400 bg-secondary rounded-2xl px-2 py-2 w-1/2">LOGIN</button>
-                </fieldset>
-            </form>
-       </div>
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="pass"
+              name="password"
+              {...register("password", { required: "Password is required" })}
+              className="py-2 px-2 rounded-2xl border border-gray-400"
+            />
+            {errors.password && (
+              <p className="text-xs text-red-500">{errors.password?.message}</p>
+            )}
+
+            <button
+              type="submit"
+              className="border border-gray-400 bg-secondary rounded-2xl px-2 py-2 w-1/2"
+            >
+              LOGIN
+            </button>
+          </fieldset>
+        </form>
+      </div>
     </div>
-  )
+  );
 }
 
-export default LogInPage
+export default LogInPage;
