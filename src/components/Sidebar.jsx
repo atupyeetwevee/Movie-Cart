@@ -7,7 +7,7 @@ import {
 } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
 
-function Sidebar({ profileMenu, setProfileMenu, showSideBar }) {
+function Sidebar({ profileMenu, setProfileMenu }) {
   const menu = [
     {
       icon: MdWindow,
@@ -28,7 +28,6 @@ function Sidebar({ profileMenu, setProfileMenu, showSideBar }) {
   ];
   return (
     <>
-      {/* {showSideBar &&  */}
       <div className="relative p-4 z-99">
         <div className="flex md:flex-col justify-between items-center h-full bg-secondary rounded-lg px-4 py-4 ">
           <div className="flex md:flex-col items-center md:gap-20 gap-10">

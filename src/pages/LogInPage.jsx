@@ -1,7 +1,12 @@
 // import { getAuth } from "firebase/auth";
 import { useForm } from "react-hook-form";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../lib/firebase";
+import { useNavigate } from "react-router-dom";
 
 function LogInPage() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -9,9 +14,28 @@ function LogInPage() {
     formState: { errors },
   } = useForm();
 
-  const onSubmitForm = (formData) => {
-    console.log(formData);
-    reset();
+  const onSubmitForm = async (formData) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password,
+      );
+
+      const user = userCredential.user;
+      console.log("Logged in", user.uid);
+
+      reset();
+      navigate("/");
+    } catch (error) {
+      console.error(error.code, error.message);
+
+      if (error.code === "auth/invalid-credential") {
+        alert("Incorrect email or password.");
+      } else {
+        alert("Login failed. Please try again.");
+      }
+    }
   };
 
   return (

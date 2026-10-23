@@ -37,12 +37,15 @@ function RegisterPage() {
   };
 
   return (
-    <div className="flex items-center justify-center text-white py-4 px-4">
-      <div className="w-full max-w-2xl">
+    <div className="flex items-center justify-center bg-secondary text-white shadow-2xl shadow-gray-600/50 border border-gray-700 rounded-xl py-4 px-4 mx-20">
+      <div className="w-1/2">
+        <img src="toon1.png" />
+      </div>
+      <div className="w-1/2 max-w-2xl">
         <form onSubmit={handleSubmit(onSubmitForm)}>
           <fieldset className="flex flex-col space-y-4 py-4 px-4 border border-gray-400 rounded-2xl">
             <legend className="text-left text-4xl uppercase px-8">
-              Registration Form
+              SIGN UP
             </legend>
 
             <label htmlFor="name">Name:</label>
