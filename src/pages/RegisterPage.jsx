@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../lib/firebase";
 
-function RegisterPage() {
+function RegisterPage({setHasAccount}) {
   const navigate = useNavigate();
   const {
     register,
@@ -37,10 +37,7 @@ function RegisterPage() {
   };
 
   return (
-    <div className="flex items-center justify-center bg-secondary text-white shadow-2xl shadow-gray-600/50 border border-gray-700 rounded-xl py-4 px-4 mx-20">
-      <div className="w-1/2">
-        <img src="toon1.png" />
-      </div>
+    <>
       <div className="w-1/2 max-w-2xl">
         <form onSubmit={handleSubmit(onSubmitForm)}>
           <fieldset className="flex flex-col space-y-4 py-4 px-4 border border-gray-400 rounded-2xl">
@@ -99,12 +96,15 @@ function RegisterPage() {
               SIGN-UP
             </button>
             <p>
-              Already have an account <Link to="/login">Log In</Link>
+              Already have an account <Link to="/login"
+              {onClick={() => setHasAccount((prev) => !prev)}>
+              Log In
+              </Link>
             </p>
           </fieldset>
         </form>
       </div>
-    </div>
+    </>
   );
 }
 

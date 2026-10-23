@@ -2,6 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import { useState } from "react";
+import SignUpCard from "../components/SignUpCard";
 
 function AppLayout() {
   const [search, setSearch] = useState("");
@@ -20,19 +21,26 @@ function AppLayout() {
   );
 
   return (
-    <div className="md:flex w-screen h-screen text-amber-50">
-      {!hideLayout && (
-        <Sidebar profileMenu={profileMenu} setProfileMenu={setProfileMenu} />
-      )}
+    <>
+      <div className="md:flex w-screen h-screen text-amber-50">
+        {!hideLayout && (
+          <Sidebar profileMenu={profileMenu} setProfileMenu={setProfileMenu} />
+        )}
 
-      <div className="flex flex-col flex-1 min-w-0">
-        <Navbar search={search} setSearch={setSearch} showSearch={showSearch} />
+        <div className="flex flex-col flex-1 min-w-0">
+          <Navbar
+            search={search}
+            setSearch={setSearch}
+            showSearch={showSearch}
+          />
 
-        <div className="p-4 overflow-y-auto">
-          <Outlet context={{ search }} />
+          <div className="p-4 overflow-y-auto">
+            <Outlet context={{ search }} />
+          </div>
         </div>
       </div>
-    </div>
+      <SignUpCard />
+    </>
   );
 }
 
