@@ -39,9 +39,9 @@ function LogInPage() {
   };
 
   return (
-    <div className="flex items-center justify-center text-white py-4 px-4">
-      <div className="w-full max-w-2xl">
-        <form onSubmit={handleSubmit(onSubmitForm)}>
+    <div className="">
+      <div className="flex items-center justify-center text-white py-4 px-4">
+        <form onSubmit={handleSubmit(onSubmitForm)} className="w-full">
           <fieldset className="flex flex-col space-y-4 py-4 px-4 border border-gray-400 rounded-2xl">
             <legend className="text-left text-4xl uppercase px-8">
               Login Form

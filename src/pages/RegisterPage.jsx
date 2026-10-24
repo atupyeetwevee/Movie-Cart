@@ -37,9 +37,9 @@ function RegisterPage({ setHasAccount }) {
   };
 
   return (
-    <>
-      <div className="w-1/2 max-w-2xl">
-        <form onSubmit={handleSubmit(onSubmitForm)}>
+    <div>
+      <div className="text-white py-4 px-4">
+        <form onSubmit={handleSubmit(onSubmitForm)} className="w-full">
           <fieldset className="flex flex-col space-y-4 py-4 px-4 border border-gray-400 rounded-2xl">
             <legend className="text-left text-4xl uppercase px-8">
               SIGN UP
@@ -101,7 +101,7 @@ function RegisterPage({ setHasAccount }) {
           </fieldset>
         </form>
       </div>
-    </>
+    </div>
   );
 }
 
