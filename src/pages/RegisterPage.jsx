@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../lib/firebase";
 
-function RegisterPage({setHasAccount}) {
+function RegisterPage({ setHasAccount }) {
   const navigate = useNavigate();
   const {
     register,
@@ -96,10 +96,7 @@ function RegisterPage({setHasAccount}) {
               SIGN-UP
             </button>
             <p>
-              Already have an account <Link to="/login"
-              {onClick={() => setHasAccount((prev) => !prev)}>
-              Log In
-              </Link>
+              Already have an account <Link to="/auth/login">Log In</Link>
             </p>
           </fieldset>
         </form>

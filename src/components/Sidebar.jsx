@@ -5,9 +5,11 @@ import {
   MdLocalMovies,
   MdWindow,
 } from "react-icons/md";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 function Sidebar({ profileMenu, setProfileMenu }) {
+  const navigate = useNavigate();
+
   const menu = [
     {
       icon: MdWindow,
@@ -65,8 +67,11 @@ function Sidebar({ profileMenu, setProfileMenu }) {
             <li className="hover:text-amber-300">
               <Link to="">SETTINGS</Link>
             </li>
-            <li className="hover:text-amber-300">
-              <Link to="/register">LOG OUT</Link>
+            <li
+              onClick={() => navigate("/auth/login")}
+              className="hover:text-amber-300"
+            >
+              <Link to="/auth/login">LOG OUT</Link>
             </li>
           </ul>
         </div>

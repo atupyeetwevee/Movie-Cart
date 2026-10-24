@@ -2,7 +2,7 @@
 import { useForm } from "react-hook-form";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../lib/firebase";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function LogInPage() {
   const navigate = useNavigate();
@@ -83,6 +83,9 @@ function LogInPage() {
             >
               LOGIN
             </button>
+            <p>
+              Don't have an account? <Link to="/auth/register">Register</Link>
+            </p>
           </fieldset>
         </form>
       </div>
