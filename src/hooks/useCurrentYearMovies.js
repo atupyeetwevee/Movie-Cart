@@ -1,10 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import { getCurrentYearMovies } from "../services/movies.service";
+import { moviesApi } from "../services/movies.service";
 
-export const useCurrentYearMovies = () => {
+export const useCurrentYearMovies = ({ search }) => {
+  const currentYear = new Date().getFullYear();
+
   return useQuery({
-    queryKey: ["currentYearMovies", new Date().getFullYear()],
-    queryFn: () => getCurrentYearMovies("the"),
+    queryKey: ["currentYearMovies", search, currentYear],
+    queryFn: () =>
+      moviesApi({
+        search,
+        type: "movie",
+        year: currentYear,
+      }),
     staleTime: 1000 * 60 * 60,
     refetchInterval: 1000 * 60 * 60,
   });

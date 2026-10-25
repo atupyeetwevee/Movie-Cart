@@ -17,17 +17,8 @@ export const moviesDetails = async (id) => {
   const response = await api.get("/", {
     params: {
       i: id,
+      plot: "full",
     },
   });
   return response.data;
-};
-
-export const getCurrentYearMovies = async (search = "the") => {
-  const currentYear = new Date().getFullYear();
-
-  return moviesApi({
-    search,
-    type: "movie",
-    year: currentYear,
-  });
 };

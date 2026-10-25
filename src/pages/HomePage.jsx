@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useMovies } from "../hooks/useMovies";
 import { useNavigate, useOutletContext } from "react-router-dom";
+import { useCurrentYearMovies } from "../hooks/useCurrentYearMovies";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -10,9 +11,10 @@ function HomePage() {
   const [popular] = useState("secret");
   const [recommended] = useState("love");
 
-  const { data: popularMovies, isLoading: isLoadingPopularMovies } = useMovies({
-    search: search || popular,
-  });
+  const { data: popularMovies, isLoading: isLoadingPopularMovies } =
+    useCurrentYearMovies({
+      search: search || popular,
+    });
 
   const { data: recommendedMovies, isLoading: isLoadingRecommendedMovies } =
     useMovies({ search: search || recommended });
@@ -33,23 +35,27 @@ function HomePage() {
         <h1>Trending</h1>
 
         <div className="grid md:grid-cols-3 grid-cols-1 gap-5 pt-4">
-          {(popularMovies?.Search || []).map((movie) => (
-            <div
-              key={movie.imdbID}
-              onClick={() => handleViewMovie(movie.imdbID)}
-              className="flex flex-col gap-5 hover:border hover:border-gray-400 rounded-lg p-4"
-            >
-              <p>
-                {movie.Title}-{movie.Year}
-              </p>
+          {(popularMovies?.Search || []).length === 0 ? (
+            <p>No movies found for this search in the current year.</p>
+          ) : (
+            (popularMovies?.Search || []).map((movie) => (
+              <div
+                key={movie.imdbID}
+                onClick={() => handleViewMovie(movie.imdbID)}
+                className="flex flex-col gap-5 hover:border hover:border-gray-400 rounded-lg p-4"
+              >
+                <p>
+                  {movie.Title}-{movie.Year}
+                </p>
 
-              <img
-                className="h-60 w-full object-cover"
-                src={movie.Poster}
-                alt={movie.Title}
-              />
-            </div>
-          ))}
+                <img
+                  className="h-60 w-full object-cover"
+                  src={movie.Poster}
+                  alt={movie.Title}
+                />
+              </div>
+            ))
+          )}
         </div>
       </div>
 
