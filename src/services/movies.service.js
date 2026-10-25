@@ -5,7 +5,7 @@ export const moviesApi = async ({ search, type, year }) => {
     params: {
       s: search,
       type: type,
-      year: year,
+      y: year,
       plot: "full",
     },
   });
@@ -22,4 +22,12 @@ export const moviesDetails = async (id) => {
   return response.data;
 };
 
+export const getCurrentYearMovies = async (search = "the") => {
+  const currentYear = new Date().getFullYear();
 
+  return moviesApi({
+    search,
+    type: "movie",
+    year: currentYear,
+  });
+};
