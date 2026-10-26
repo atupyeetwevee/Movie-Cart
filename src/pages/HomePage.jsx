@@ -34,7 +34,7 @@ function HomePage() {
       <div className="">
         <h1>Trending</h1>
 
-        <div className="grid md:grid-cols-3 grid-cols-1 gap-5 pt-4">
+        <div className="grid md:grid-cols-3 gap-5 pt-4">
           {(popularMovies?.Search || []).length === 0 ? (
             <p>No movies found for this search in the current year.</p>
           ) : (

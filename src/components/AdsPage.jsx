@@ -1,32 +1,34 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { useMovies } from "../hooks/useMovies";
 
 function AdsPage() {
-  const [popular] = useState("secret");
-
-  const { data: popularMovies, isLoading } = useMovies({
-    search: popular,
+  const { data, isLoading } = useMovies({
+    search: "Batman",
+    type: "movie",
   });
 
-  const movies = popularMovies?.Search || [];
+  const movies = data?.Search || [];
 
-  if (isLoading) {
-    return <p>Loading movies...</p>;
-  }
+  if (isLoading) return <p>Loading ads...</p>;
+
+  if (!movies.length) return <p>No movies available.</p>;
 
   return (
     <div className="h-full w-full">
-      <div className="grid h-full grid-cols-2 md:grid-cols-4 gap-2">
-        {movies.slice(0, 4).map((movie) => (
+      <div className="grid h-full grid-cols-2 md:grid-cols-4 animate-movie-scroll gap-2">
+        {[...movies, ...movies].map((movie, index) => (
           <div
-            key={movie.imdbID}
-            className="min-h-0 min-w-0 overflow-hidden rounded-lg"
+            key={`${movie.imdbID}`}
+            className="min-h-0 min-w-0 overflow-hidden  rounded-lg"
           >
-            <img
-              className="block h-full w-full object-cover"
-              src={movie.Poster}
-              alt={movie.Title}
-            />
+            <div className="relative shrink-0">
+              <img
+                className="block h-full w-full object-cover transition-transform duration-300 ease-out
+    hover:scale-110 hover:z-10"
+                src={movie.Poster}
+                alt={movie.Title}
+              />
+            </div>
           </div>
         ))}
       </div>

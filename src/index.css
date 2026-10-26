@@ -1,15 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
-
-@theme{
-    --color-primary: #10141f;
-    --color-secondary: #161d2f;
+@theme {
+  --color-primary: #10141f;
+  --color-secondary: #161d2f;
+  --animate-movie-scroll: movie-scroll 25s linear infinite;
 }
 
 body {
-    background-color: var(--color-primary);
-    font-family: "Heebo", sans-serif;
+  background-color: var(--color-primary);
+  font-family: "Heebo", sans-serif;
+}
+
+@keyframes movie-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 input:-webkit-autofill,
