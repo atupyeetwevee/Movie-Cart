@@ -15,10 +15,10 @@ function AdsPage() {
 
   return (
     <div className="h-full w-full">
-      <div className="grid h-full grid-cols-2 md:grid-cols-4 animate-movie-scroll gap-2">
+      <div className="grid h-full grid-cols-2 md:grid-cols-4 movie-track gap-2">
         {[...movies, ...movies].map((movie, index) => (
           <div
-            key={`${movie.imdbID}`}
+            key={`${movie.imdbID}-${index}`}
             className="min-h-0 min-w-0 overflow-hidden  rounded-lg"
           >
             <div className="relative shrink-0">
