@@ -1,5 +1,6 @@
 // import { useState } from "react";
 import { useMovies } from "../hooks/useMovies";
+import { motion } from "framer-motion";
 
 function AdsPage() {
   const { data, isLoading } = useMovies({
@@ -13,23 +14,28 @@ function AdsPage() {
 
   if (!movies.length) return <p>No movies available.</p>;
 
+  const repeatedMovies = [...movies, ...movies];
+
   return (
     <div className="h-full w-full">
-      <div className="grid h-full grid-cols-2 md:grid-cols-4 movie-track gap-2">
-        {[...movies, ...movies].map((movie, index) => (
-          <div
+      <div className="flex w-full h-full gap-2">
+        {repeatedMovies.map((movie, index) => (
+          <motion.div
             key={`${movie.imdbID}-${index}`}
-            className="min-h-0 min-w-0 overflow-hidden  rounded-lg"
+            className="rounded-lg w-full bg-amber-600"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              duration: 25,
+              ease: "linear",
+              repeat: Infinity,
+            }}
           >
-            <div className="relative shrink-0">
-              <img
-                className="block h-full w-full object-cover transition-transform duration-300 ease-out
-    hover:scale-110 hover:z-10"
-                src={movie.Poster}
-                alt={movie.Title}
-              />
-            </div>
-          </div>
+            <img
+              className=" h-full w-full object-cover"
+              src={movie.Poster}
+              alt={movie.Title}
+            />
+          </motion.div>
         ))}
       </div>
     </div>
