@@ -43,11 +43,6 @@ function RegisterPage({ setHasAccount }) {
           onSubmit={handleSubmit(onSubmitForm)}
           className="flex flex-col gap-5"
         >
-          {/* <fieldset className="flex flex-col space-y-4 py-4 px-4 border border-gray-400 rounded-2xl">
-            <legend className="text-left text-4xl uppercase px-8">
-              SIGN UP
-            </legend> */}
-
           <label htmlFor="name">Name:</label>
           <input
             type="text"
@@ -101,7 +96,6 @@ function RegisterPage({ setHasAccount }) {
           <p>
             Already have an account <Link to="/auth/login">Log In</Link>
           </p>
-          {/* </fieldset> */}
         </form>
       </div>
     </div>
