@@ -39,11 +39,11 @@ function LogInPage() {
   };
 
   return (
-    <div className="flex items-center justify-center text-white w-full h-full">
-      <div className="w-full bg-purple-400">
+    <div className="flex items-center justify-center text-white w-full ">
+      <div className="w-full">
         <form
           onSubmit={handleSubmit(onSubmitForm)}
-          className="flex flex-col gap-5 bg-green-300"
+          className="flex flex-col gap-5"
         >
           {/* <fieldset className="flex flex-col space-y-4 py-4 px-4 border border-gray-400 rounded-2xl">
           <legend className="text-left text-4xl uppercase px-8">
