@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../lib/firebase";
 
-function RegisterPage({ setHasAccount }) {
+function RegisterPage() {
   const navigate = useNavigate();
   const {
     register,
