@@ -43,59 +43,66 @@ function RegisterPage() {
           onSubmit={handleSubmit(onSubmitForm)}
           className="flex flex-col gap-5"
         >
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Enter your Full Name"
-            {...register("name", { required: "Name is required" })}
-            className="py-2 px-2 rounded-2xl border border-gray-400"
-          />
-          {errors.name && (
-            <p className="text-xs text-red-500">{errors.name?.message}</p>
-          )}
-
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="example@gmail.com"
-            {...register("email", {
-              required: "Enter an email address",
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: "Please enter a valid email address",
-              },
-            })}
-            className="py-2 px-2 rounded-2xl border border-gray-400"
-          />
-          {errors.email && (
-            <p className="text-xs text-red-500">{errors.email?.message}</p>
-          )}
-
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="pass"
-            name="password"
-            {...register("password", { required: "Password is required" })}
-            className="py-2 px-2 rounded-2xl border border-gray-400"
-          />
-          {errors.password && (
-            <p className="text-xs text-red-500">{errors.password?.message}</p>
-          )}
-
-          <button
-            type="submit"
-            className="border border-gray-400 bg-secondary rounded-2xl px-2 py-2 w-1/2"
-          >
-            SIGN-UP
-          </button>
-          <p>
-            Already have an account <Link to="/auth/login">Log In</Link>
-          </p>
+          <div className="flex flex-col w-full gap-5">
+            <div className="flex gap-2 w-full justify-center items-center border border-gray-400">
+              <p>Name:</p>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your Full Name"
+                {...register("name", { required: "Name is required" })}
+                className="w-full py-2 px-2 rounded-2xl border border-gray-400"
+              />
+            </div>
+            {errors.name && (
+              <p className="text-xs text-red-500">{errors.name?.message}</p>
+            )}
+            <div className="flex gap-2 w-full justify-center items-center border border-gray-400">
+              <p htmlFor="email">Email:</p>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="example@gmail.com"
+                {...register("email", {
+                  required: "Enter an email address",
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: "Please enter a valid email address",
+                  },
+                })}
+                className="w-full py-2 px-2 rounded-2xl border border-gray-400"
+              />
+            </div>
+            {errors.email && (
+              <p className="text-xs text-red-500">{errors.email?.message}</p>
+            )}
+            <div className="flex gap-2 w-full justify-center items-center border border-gray-400">
+              <p htmlFor="password">Password:</p>
+              <input
+                type="password"
+                id="pass"
+                name="password"
+                {...register("password", { required: "Password is required" })}
+                className="w-full py-2 px-2 rounded-2xl border border-gray-400"
+              />
+            </div>
+            {errors.password && (
+              <p className="text-xs text-red-500">{errors.password?.message}</p>
+            )}
+            <div className="flex justify-center items-center ">
+              <button
+                type="submit"
+                className="border border-gray-400 bg-secondary rounded-2xl px-2 py-2 w-full"
+              >
+                SIGN-UP
+              </button>
+            </div>
+            <p>
+              Already have an account <Link to="/auth/login">Log In</Link>
+            </p>
+          </div>
         </form>
       </div>
     </div>
