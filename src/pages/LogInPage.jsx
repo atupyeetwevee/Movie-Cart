@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../lib/firebase";
 import { Link, useNavigate } from "react-router-dom";
+import { LuEyeOff, LuMail } from "react-icons/lu";
 
 function LogInPage() {
   const navigate = useNavigate();
@@ -44,14 +45,16 @@ function LogInPage() {
         <form
           onSubmit={handleSubmit(onSubmitForm)}
           className="flex flex-col gap-5 w-full"
+          autoComplete="off"
         >
           <div className="flex flex-col w-full gap-5">
-            <div className="flex gap-2 w-full justify-center items-center border border-gray-400">
-              <p className="">Email:</p>
+            <div className="flex gap-2 w-full justify-end items-center px-4 py-2 border border-gray-400 rounded-lg">
               <input
                 type="email"
                 id="email"
                 name="email"
+                placeholder="example@gmail.com"
+                autoComplete="off"
                 {...register("email", {
                   required: "Enter an email address",
                   pattern: {
@@ -59,23 +62,26 @@ function LogInPage() {
                     message: "Please enter a valid email address",
                   },
                 })}
-                className="w-full py-2 px-2 rounded-2xl border border-gray-400"
+                className="w-full outline-none"
               />
+              <LuMail />
             </div>
 
             {errors.email && (
               <p className="text-xs text-red-500">{errors.email?.message}</p>
             )}
 
-            <div className="flex gap-2 w-full justify-center items-center border border-gray-400">
-              <p className="">Password:</p>
+            <div className="flex gap-2 w-full justify-end items-center px-4 py-2 border border-gray-400 rounded-lg">
               <input
                 type="password"
                 id="pass"
                 name="password"
+                placeholder="********"
+                autoComplete="new-password"
                 {...register("password", { required: "Password is required" })}
-                className="w-full py-2 px-2 rounded-2xl border border-gray-400"
+                className="w-full outline-none"
               />
+              <LuEyeOff />
             </div>
             {errors.password && (
               <p className="text-xs text-red-500">{errors.password?.message}</p>
@@ -88,7 +94,7 @@ function LogInPage() {
             <div className="flex justify-center items-center ">
               <button
                 type="submit"
-                className="border border-gray-400 bg-secondary rounded-2xl px-2 py-2 w-full"
+                className="border border-gray-400 bg-secondary rounded-lg px-2 py-2 w-full"
               >
                 LOGIN
               </button>

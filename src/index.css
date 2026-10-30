@@ -11,7 +11,7 @@ body {
   font-family: "Heebo", sans-serif;
 }
 
-input:-webkit-autofill,
+/* input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active,
@@ -25,4 +25,16 @@ select:-webkit-autofill {
   box-shadow: 0 0 0 1000px #10141f inset !important;
   background-color: #10141f !important;
   caret-color: inherit;
+} */
+
+/* Keep Chrome autofill consistent with Movie Cart's dark theme */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: white !important;
+  caret-color: white !important;
+  -webkit-box-shadow: 0 0 0 1000px #161d2f inset !important;
+  box-shadow: 0 0 0 1000px #161d2f inset !important;
+  background-color: #161d2f !important;
 }

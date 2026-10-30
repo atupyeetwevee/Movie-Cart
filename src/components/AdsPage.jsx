@@ -85,7 +85,7 @@ function AdsPage() {
       </button>
 
       {/* Slide indicators */}
-      <div className="absolute bottom-3 right-50 z-10 flex gap-2">
+      <div className="absolute bottom-3 right-30 z-10 flex gap-2">
         {movies.map((movie, index) => (
           <button
             key={movie.imdbID}
