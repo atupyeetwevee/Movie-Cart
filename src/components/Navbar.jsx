@@ -2,7 +2,7 @@ import { LuSearch } from "react-icons/lu";
 
 function Navbar({ search, setSearch, showSearch }) {
   return (
-    <div className="sticky w-1/2 md:top-0 py-8 p-4 bg-primary">
+    <div className="sticky w-1/2 md:w-full top-0 py-8 p-4 bg-primary">
       {showSearch && (
         <div className="relative flex items-center border border-gray-100 md:w-1/2 w-full p-2 rounded-md">
           <LuSearch className="absolute left-3 text-xl" />
