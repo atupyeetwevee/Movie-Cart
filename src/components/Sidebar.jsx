@@ -62,7 +62,7 @@ function Sidebar({ profileMenu, setProfileMenu }) {
       </div>
 
       {profileMenu && (
-        <div className="absolute left-21 bottom-4 py-2 text-white h-20 w-25 text-center bg-secondary">
+        <div className="absolute top-20 md:left-21 md:bottom-4 right-5 py-2 text-white h-20 w-25 text-center bg-secondary">
           <ul className="">
             <li className="hover:text-amber-300">
               <Link to="">SETTINGS</Link>
