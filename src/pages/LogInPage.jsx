@@ -1,9 +1,10 @@
 // import { getAuth } from "firebase/auth";
 import { useForm } from "react-hook-form";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../lib/firebase";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../lib/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { LuEyeOff, LuMail } from "react-icons/lu";
+import { Icon } from "@iconify/react";
 
 function LogInPage() {
   const navigate = useNavigate();
@@ -35,6 +36,28 @@ function LogInPage() {
         alert("Incorrect email or password.");
       } else {
         alert("Login failed. Please try again.");
+      }
+    }
+  };
+
+  //Google LogIn
+
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+
+      const user = result.user;
+
+      console.log("Google login successful:", user.uid);
+
+      navigate("/");
+    } catch (error) {
+      console.error(error.code, error.message);
+
+      if (error.code === "auth/popup-closed-by-user") {
+        alert("Google login was cancelled.");
+      } else {
+        alert("Google login failed. Please try again.");
       }
     }
   };
@@ -91,12 +114,21 @@ function LogInPage() {
               <p>Forgot Password?</p>
             </div>
 
-            <div className="flex justify-center items-center ">
+            <div className="flex gap-5 justify-center items-center ">
               <button
                 type="submit"
-                className="border border-gray-400 bg-secondary rounded-lg px-2 py-2 w-full"
+                className="bg-gray-500 border border-gray-400 rounded-lg px-2 py-2 w-1/2"
               >
                 LOGIN
+              </button>
+
+              <button
+                type="submit"
+                className="flex justify-center items-center gap-1 border border-gray-400 bg-secondary rounded-lg px-2 py-2 w-1/2"
+                onClick={handleGoogleLogin}
+              >
+                <Icon icon="logos:google-icon" />
+                <p className="text-gray-500 text-xl">|</p> Continue with Google
               </button>
             </div>
             <p>

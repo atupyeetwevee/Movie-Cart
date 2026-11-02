@@ -1,8 +1,9 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../lib/firebase";
+import { auth, provider } from "../lib/firebase";
 import { LuEyeOff, LuMail, LuUserRound } from "react-icons/lu";
+import { Icon } from "@iconify/react";
 
 function RegisterPage() {
   const navigate = useNavigate();
@@ -34,6 +35,28 @@ function RegisterPage() {
       console.error(error.code);
 
       alert("Something went wrong. Please try again.");
+    }
+  };
+
+  //Google LogIn
+
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+
+      const user = result.user;
+
+      console.log("Google login successful:", user.uid);
+
+      navigate("/");
+    } catch (error) {
+      console.error(error.code, error.message);
+
+      if (error.code === "auth/popup-closed-by-user") {
+        alert("Google login was cancelled.");
+      } else {
+        alert("Google login failed. Please try again.");
+      }
     }
   };
 
@@ -97,12 +120,21 @@ function RegisterPage() {
             {errors.password && (
               <p className="text-xs text-red-500">{errors.password?.message}</p>
             )}
-            <div className="flex justify-center items-center ">
+            <div className="flex gap-5 justify-center items-center ">
               <button
                 type="submit"
-                className="border border-gray-400 bg-secondary rounded-lg px-2 py-2 w-full"
+                className="border border-gray-400 bg-gray-400 rounded-lg px-2 py-2 w-1/2"
               >
                 SIGN-UP
+              </button>
+
+              <button
+                type="submit"
+                className="flex justify-center items-center gap-1 border border-gray-400 bg-secondary rounded-lg px-2 py-2 w-1/2"
+                onClick={handleGoogleLogin}
+              >
+                <Icon icon="logos:google-icon" />
+                <p className="text-gray-500 text-xl">|</p> Continue with Google
               </button>
             </div>
             <p>
