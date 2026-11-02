@@ -46,7 +46,7 @@ function HomePage() {
                 onClick={() => handleViewMovie(movie.imdbID)}
                 className="flex flex-col gap-2 hover:border hover:border-gray-400 rounded-lg px-2"
               >
-                <p>
+                <p className="line-clamp-1 font-medium">
                   {movie.Title}-{movie.Year}
                 </p>
 

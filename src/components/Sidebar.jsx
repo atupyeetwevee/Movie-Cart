@@ -1,10 +1,4 @@
-import {
-  MdArtTrack,
-  MdBookmark,
-  MdLiveTv,
-  MdLocalMovies,
-  MdWindow,
-} from "react-icons/md";
+import { MdBookmark, MdLiveTv, MdLocalMovies, MdWindow } from "react-icons/md";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 function Sidebar({ profileMenu, setProfileMenu }) {
@@ -31,9 +25,13 @@ function Sidebar({ profileMenu, setProfileMenu }) {
   return (
     <>
       <div className="relative pl-4 z-99">
-        <div className="flex md:flex-col justify-between items-center h-full bg-secondary border-amber-100 border-r-1 px-4 py-4 ">
+        <div className="flex md:flex-col justify-between items-center h-full bg-secondary border-gray-500 border-r px-4 py-4 ">
           <div className="flex md:flex-col items-center md:gap-20 gap-10">
-            <MdArtTrack className="text-4xl text-red-400" />
+            <img
+              src="logo.png"
+              alt="image of a movie-cart logo"
+              className="w-10 h-10"
+            />
             <div className="flex md:flex-col gap-6">
               {menu.map((item) => {
                 const Icon = item.icon;
