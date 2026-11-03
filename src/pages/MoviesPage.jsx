@@ -5,7 +5,7 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 function MoviesPage() {
   const navigate = useNavigate();
 
-  const { search } = useOutletContext();
+  const { search, profileMenu } = useOutletContext();
 
   const [popular] = useState("fault");
 
@@ -25,23 +25,25 @@ function MoviesPage() {
     <div className="py-4">
       <h1>Popular Movies</h1>
 
-      <div className="grid md:grid-cols-4 grid-cols-1 md:gap-10 pt-4">
+      <div
+        className={`grid pt-4 px-4 ${profileMenu ? "grid-cols-6 gap-1" : "grid-cols-7 gap-3"}`}
+      >
         {(popularMovies?.Search || []).map((movie) => (
           <>
             <div
               key={movie.imdbID}
               onClick={() => handleViewMovie(movie.imdbID)}
-              className="flex flex-col gap-5 hover:border hover:border-gray-400 rounded-lg p-4"
+              className="flex flex-col gap-3 px-2 pt-8"
             >
-              <p>
-                {movie.Title}-{movie.Year}
-              </p>
-
               <img
-                className="h-60 w-full object-cover"
+                className="object-cover h-full rounded-md border-2 border-white"
                 src={movie.Poster}
                 alt={movie.Title}
               />
+
+              <p className="line-clamp-1 font-medium">
+                {movie.Title}-{movie.Year}
+              </p>
             </div>
             {/* <div className="">
               <LuBookmark />

@@ -47,7 +47,7 @@ function HomePage() {
                 className="flex flex-col gap-2 px-2 pt-2"
               >
                 <img
-                  className={`object-cover h-full rounded-md border-2 border-white ${profileMenu ? "aspect-1/3" : "aspect-2/3"}`}
+                  className="object-cover h-full rounded-md border-2 border-white"
                   src={movie.Poster}
                   alt={movie.Title}
                 />
@@ -64,22 +64,24 @@ function HomePage() {
       <div className="pt-8">
         <h1>Recommended for you</h1>
 
-        <div className="grid md:grid-cols-4 grid-cols-2 gap-3 pt-4">
+        <div
+          className={`grid pt-4 px-4 ${profileMenu ? "grid-cols-6 gap-1" : "grid-cols-7 gap-3"}`}
+        >
           {(recommendedMovies?.Search || []).map((movie) => (
             <div
               key={movie.imdbID}
               onClick={() => handleViewMovie(movie.imdbID)}
-              className="flex flex-col gap-3 hover:border hover:border-gray-400 rounded-lg px-2 pt-8"
+              className="flex flex-col gap-3 px-2 pt-8"
             >
-              <p className="line-clamp-1 font-medium">
-                {movie.Title}-{movie.Year}
-              </p>
-
               <img
-                className="aspect-2/3 object-cover"
+                className="object-cover h-full rounded-md border-2 border-white"
                 src={movie.Poster}
                 alt={movie.Title}
               />
+
+              <p className="line-clamp-1 font-medium">
+                {movie.Title}-{movie.Year}
+              </p>
             </div>
           ))}
         </div>
