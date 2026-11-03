@@ -40,15 +40,20 @@ function SeriesPage() {
               alt={series.Title}
             />
 
+            <p className="line-clamp-1 font-medium">
+              {series.Title}-{series.Year}
+            </p>
+
             <div
-              className="absolute inset-0 flex items-end
-  bg-gradient-to-t from-black via-black/30 to-transparent
-  opacity-0 group-hover:opacity-100
-  transition-opacity duration-300 p-3"
+              className="absolute left-0 bottom-full mb-2 z-50
+      bg-black text-white text-xs px-3 py-2 rounded-lg
+      shadow-lg whitespace-nowrap
+      opacity-0 invisible
+      group-hover:opacity-100
+      group-hover:visible
+      transition-all duration-200 pointer-events-none"
             >
-              <p className="line-clamp-1 font-medium">
-                {series.Title}-{series.Year}
-              </p>
+              {series.Title} - {series.Year}
             </div>
           </div>
         ))}
