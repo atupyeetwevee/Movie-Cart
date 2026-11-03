@@ -35,7 +35,7 @@ function HomePage() {
         <h1>Trending</h1>
 
         <div
-          className={`grid gap-3 pt-4 ${profileMenu ? "grid-cols-3" : "grid-cols-4"}`}
+          className={`grid pt-4 px-4 ${profileMenu ? "grid-cols-6 gap-1" : "grid-cols-7 gap-3"}`}
         >
           {(popularMovies?.Search || []).length === 0 ? (
             <p>No movies found for this search in the current year.</p>
@@ -44,17 +44,17 @@ function HomePage() {
               <div
                 key={movie.imdbID}
                 onClick={() => handleViewMovie(movie.imdbID)}
-                className="flex flex-col gap-2 hover:border hover:border-gray-400 rounded-lg px-2"
+                className="flex flex-col gap-2 px-2 pt-2"
               >
-                <p className="line-clamp-1 font-medium">
-                  {movie.Title}-{movie.Year}
-                </p>
-
                 <img
-                  className="aspect-2/3 object-cover"
+                  className={`object-cover h-full rounded-md border-2 border-white ${profileMenu ? "aspect-1/3" : "aspect-2/3"}`}
                   src={movie.Poster}
                   alt={movie.Title}
                 />
+
+                <p className="line-clamp-1 font-medium">
+                  {movie.Title}-{movie.Year}
+                </p>
               </div>
             ))
           )}
@@ -64,19 +64,19 @@ function HomePage() {
       <div className="pt-8">
         <h1>Recommended for you</h1>
 
-        <div className="grid md:grid-cols-4 grid-cols-2 gap-5 pt-4">
+        <div className="grid md:grid-cols-4 grid-cols-2 gap-3 pt-4">
           {(recommendedMovies?.Search || []).map((movie) => (
             <div
               key={movie.imdbID}
               onClick={() => handleViewMovie(movie.imdbID)}
-              className="flex flex-col gap-5 hover:border hover:border-gray-400 rounded-lg p-4"
+              className="flex flex-col gap-3 hover:border hover:border-gray-400 rounded-lg px-2 pt-8"
             >
-              <p>
+              <p className="line-clamp-1 font-medium">
                 {movie.Title}-{movie.Year}
               </p>
 
               <img
-                className="h-60 w-full object-cover"
+                className="aspect-2/3 object-cover"
                 src={movie.Poster}
                 alt={movie.Title}
               />
