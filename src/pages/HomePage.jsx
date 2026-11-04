@@ -35,7 +35,7 @@ function HomePage() {
         <h1>Trending</h1>
 
         <div
-          className={`grid pt-4 px-4 ${profileMenu ? "grid-cols-6 gap-1" : "grid-cols-7 gap-3"}`}
+          className={`grid ${profileMenu ? "grid-cols-5 gap-1" : "grid-cols-7 gap-3"}`}
         >
           {(popularMovies?.Search || []).length === 0 ? (
             <p>No movies found for this search in the current year.</p>
@@ -44,6 +44,7 @@ function HomePage() {
               <div
                 key={movie.imdbID}
                 onClick={() => handleViewMovie(movie.imdbID)}
+                title={`${movie.Title} - ${movie.Year}`}
                 className="flex flex-col gap-2 px-2 pt-8 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
               >
                 <img
@@ -61,16 +62,17 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="pt-8">
+      <div className="pt-20">
         <h1>Recommended for you</h1>
 
         <div
-          className={`grid pt-4 px-4 ${profileMenu ? "grid-cols-6 gap-1" : "grid-cols-7 gap-3"}`}
+          className={`grid px-4 ${profileMenu ? "grid-cols-6 gap-1" : "grid-cols-7 gap-3"}`}
         >
           {(recommendedMovies?.Search || []).map((movie) => (
             <div
               key={movie.imdbID}
               onClick={() => handleViewMovie(movie.imdbID)}
+              title={`${movie.Title} - ${movie.Year}`}
               className="flex flex-col gap-3 px-2 pt-8 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
             >
               <img

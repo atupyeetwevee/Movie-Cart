@@ -22,17 +22,18 @@ function MoviesPage() {
   }
 
   return (
-    <div className="py-4">
+    <div className="">
       <h1>Popular Movies</h1>
 
       <div
-        className={`grid pt-4 px-4 ${profileMenu ? "grid-cols-6 gap-1" : "grid-cols-7 gap-3"}`}
+        className={`grid ${profileMenu ? "grid-cols-6 gap-1" : "grid-cols-7 gap-3"}`}
       >
         {(popularMovies?.Search || []).map((movie) => (
           <>
             <div
               key={movie.imdbID}
               onClick={() => handleViewMovie(movie.imdbID)}
+              title={`${movie.Title} - ${movie.Year}`}
               className="flex flex-col gap-3 px-2 pt-8 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
             >
               <img

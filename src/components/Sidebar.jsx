@@ -63,8 +63,8 @@ function Sidebar({ profileMenu, setProfileMenu }) {
 
       {profileMenu && (
         <div
-          className={`h-full shrink-0 bg-secondary overflow-hidden transition-[width,opacity] duration-500 ease-in-out py-4 px-4 ${
-            profileMenu ? "w-1/4 opacity-100" : "w-0 opacity-0"
+          className={`h-full shrink-0 bg-secondary transition-all duration-500 ease-in-out py-4 px-4 ${
+            profileMenu ? "flex-1 opacity-100" : "flex-0 opacity-0"
           }`}
         >
           <ul className="">
