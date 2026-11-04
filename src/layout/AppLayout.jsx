@@ -6,6 +6,7 @@ import { useState } from "react";
 function AppLayout() {
   const [search, setSearch] = useState("");
   const [profileMenu, setProfileMenu] = useState(false);
+  const [showMovieDetails, setShowMovieDetails] = useState(true);
   const location = useLocation();
 
   const showSearch = !(
