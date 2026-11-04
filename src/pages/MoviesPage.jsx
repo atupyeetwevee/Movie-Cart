@@ -5,7 +5,8 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 function MoviesPage() {
   const navigate = useNavigate();
 
-  const { search, profileMenu } = useOutletContext();
+  const { search, profileMenu, showMovieDetails, setShowMovieDetails } =
+    useOutletContext();
 
   const [popular] = useState("fault");
 
@@ -40,6 +41,7 @@ function MoviesPage() {
                 className="object-cover h-full rounded-md border-2 border-white"
                 src={movie.Poster}
                 alt={movie.Title}
+                onclick={() => setShowMovieDetails(!showMovieDetails)}
               />
 
               <p className="line-clamp-1 font-medium">
