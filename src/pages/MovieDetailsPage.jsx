@@ -1,10 +1,10 @@
 import { useOutletContext, useParams } from "react-router-dom";
 import { useMovieDetails } from "../hooks/useMovieDetails";
+import { LuX } from "react-icons/lu";
 
-const MovieDetailsPage = () => {
-  const { id } = useParams();
-
-  const { showMovieDetails, setShowMovieDetails } = useOutletContext();
+const MovieDetailsPage = ({ id, onClose }) => {
+  // const { showDetails } = useOutletContext;
+  // const { id } = useParams();
 
   const { data: movie, isLoading } = useMovieDetails(id);
   console.log("Movie data:", movie);
@@ -15,38 +15,38 @@ const MovieDetailsPage = () => {
 
   return (
     <>
-      {setShowMovieDetails && (
-        <div
-          className={`md:flex gap-15 px-4 py-4 ${showMovieDetails ? "flex-1 opacity-100" : "flex-0 opacity-0"}`}
-        >
-          <div className="md:w-1/4 ">
-            <img src={movie?.Poster} alt={movie?.Title} />
+      <div className={`flex gap-15 px-4 py-4 `}>
+        <div className="flex justify-end" onClick={onClose}>
+          <LuX size={24} />
+        </div>
+
+        <div className="md:w-1/4 ">
+          <img src={movie?.Poster} alt={movie?.Title} />
+        </div>
+        <div className="md:w-3/4 flex flex-col gap-8 pt-5">
+          <h1 className="md:text-4xl">{movie?.Title}</h1>
+          <ul className="flex gap-8 md:text-2xl">
+            <li>{movie?.Year}</li>
+            <li>{movie?.imdbRating}</li>
+            <li>{movie?.Runtime}</li>
+            <li>{movie?.Website}</li>
+          </ul>
+
+          <div>
+            <h2 className="md:text-3xl">ABOUT</h2>
+            <p className="">{movie?.Plot}</p>
           </div>
-          <div className="md:w-3/4 flex flex-col gap-8 pt-5">
-            <h1 className="md:text-4xl">{movie?.Title}</h1>
-            <ul className="flex gap-8 md:text-2xl">
-              <li>{movie?.Year}</li>
-              <li>{movie?.imdbRating}</li>
-              <li>{movie?.Runtime}</li>
-              <li>{movie?.Website}</li>
-            </ul>
 
-            <div>
-              <h2 className="md:text-3xl">ABOUT</h2>
-              <p className="">{movie?.Plot}</p>
-            </div>
-
-            <div>
-              <h2 className="md:text-3xl">GENRE</h2>
-              <p>{movie?.Genre}</p>
-            </div>
-            <div>
-              <h2 className="md:text-3xl">CAST</h2>
-              <p>{movie?.Actors}</p>
-            </div>
+          <div>
+            <h2 className="md:text-3xl">GENRE</h2>
+            <p>{movie?.Genre}</p>
+          </div>
+          <div>
+            <h2 className="md:text-3xl">CAST</h2>
+            <p>{movie?.Actors}</p>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 };

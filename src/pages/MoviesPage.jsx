@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 function MoviesPage() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const { search, profileMenu, showMovieDetails, setShowMovieDetails } =
+  const { search, profileMenu, showDetails, setShowDetails, setSelectedMovie } =
     useOutletContext();
 
   const [popular] = useState("fault");
@@ -15,7 +15,9 @@ function MoviesPage() {
   });
 
   const handleViewMovie = (id) => {
-    navigate(`/movie/${id}`);
+    // navigate(`/movie/${id}`);
+    setSelectedMovie(id);
+    setShowDetails(true);
   };
 
   if (isLoading) {
@@ -23,11 +25,11 @@ function MoviesPage() {
   }
 
   return (
-    <div className="">
+    <div className="py-4 bg-amber-200">
       <h1>Popular Movies</h1>
 
       <div
-        className={`grid ${profileMenu ? "grid-cols-6 gap-1" : "grid-cols-7 gap-3"}`}
+        className={`grid pt-4 ${profileMenu ? "grid-cols-6 gap-1" : "grid-cols-7 gap-3"}`}
       >
         {(popularMovies?.Search || []).map((movie) => (
           <>
@@ -35,13 +37,12 @@ function MoviesPage() {
               key={movie.imdbID}
               onClick={() => handleViewMovie(movie.imdbID)}
               title={`${movie.Title} - ${movie.Year}`}
-              className="flex flex-col gap-3 px-2 pt-8 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+              className="flex flex-col gap-3 px-2 pt-8 bg-red-300 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
             >
               <img
                 className="object-cover h-full rounded-md border-2 border-white"
                 src={movie.Poster}
                 alt={movie.Title}
-                onclick={() => setShowMovieDetails(!showMovieDetails)}
               />
 
               <p className="line-clamp-1 font-medium">
