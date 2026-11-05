@@ -49,7 +49,10 @@ function AppLayout() {
             </div>
             {showDetails && (
               <div className="w-1/2  overflow-y-auto">
-                <MovieDetailsPage id={selectedMovie} />
+                <MovieDetailsPage
+                  id={selectedMovie}
+                  onClose={() => setShowDetails(false)}
+                />
               </div>
             )}
           </div>

@@ -29,7 +29,7 @@ function MoviesPage() {
       <h1>Popular Movies</h1>
 
       <div
-        className={`grid pt-4 ${profileMenu ? "grid-cols-6 gap-1" : "grid-cols-7 gap-3"}`}
+        className={`grid pt-4 ${showDetails ? "grid-cols-4 gap-1" : profileMenu ? "grid-cols-5 gap-3" : "grid-cols-7 gap-1"}`}
       >
         {(popularMovies?.Search || []).map((movie) => (
           <>

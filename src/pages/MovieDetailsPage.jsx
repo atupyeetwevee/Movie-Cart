@@ -16,8 +16,8 @@ const MovieDetailsPage = ({ id, onClose }) => {
   return (
     <>
       <div className={`flex gap-15 px-4 py-4 `}>
-        <div className="flex justify-end" onClick={onClose}>
-          <LuX size={24} />
+        <div className="flex justify-end">
+          <LuX onClick={onClose} size={24} />
         </div>
 
         <div className="md:w-1/4 ">
