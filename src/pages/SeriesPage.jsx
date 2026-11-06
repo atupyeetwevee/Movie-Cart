@@ -3,9 +3,10 @@ import { useState } from "react";
 import { useSeries } from "../hooks/useSeries";
 
 function SeriesPage() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const { search, profileMenu } = useOutletContext();
+  const { search, profileMenu, showDetails, setShowDetails, setSelectedMovie } =
+    useOutletContext();
 
   const [popular] = useState("summer");
 
@@ -14,7 +15,9 @@ function SeriesPage() {
   });
 
   const handleViewMovie = (id) => {
-    navigate(`/series/${id}`);
+    // navigate(`/series/${id}`);
+    setSelectedMovie(id);
+    setShowDetails(true);
   };
 
   if (isLoading) {
@@ -26,7 +29,7 @@ function SeriesPage() {
       <h1>Popular Series</h1>
 
       <div
-        className={`grid ${profileMenu ? "grid-cols-6 gap-1" : "grid-cols-7 gap-3"}`}
+        className={`grid ${showDetails ? "grid-cols-4 gap-1" : profileMenu ? "grid-cols-5 gap-1" : "grid-cols-7 gap-3"}`}
       >
         {(popularSeries?.Search || []).map((series) => (
           <div

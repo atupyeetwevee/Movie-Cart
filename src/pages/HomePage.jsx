@@ -4,9 +4,10 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import { useCurrentYearMovies } from "../hooks/useCurrentYearMovies";
 
 function HomePage() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const { search, profileMenu } = useOutletContext();
+  const { search, profileMenu, showDetails, setShowDetails, setSelectedMovie } =
+    useOutletContext();
 
   const [popular] = useState("secret");
   const [recommended] = useState("love");
@@ -22,7 +23,9 @@ function HomePage() {
   const isLoading = isLoadingPopularMovies || isLoadingRecommendedMovies;
 
   const handleViewMovie = (id) => {
-    navigate(`/movie/${id}`);
+    // navigate(`/movie/${id}`);
+    setSelectedMovie(id);
+    setShowDetails(true);
   };
 
   if (isLoading) {
@@ -35,7 +38,7 @@ function HomePage() {
         <h1>Trending</h1>
 
         <div
-          className={`grid ${profileMenu ? "grid-cols-5 gap-1" : "grid-cols-7 gap-3"}`}
+          className={`grid ${showDetails ? "grid-cols-4 gap-1" : profileMenu ? "grid-cols-5 gap-1" : "grid-cols-7 gap-3"}`}
         >
           {(popularMovies?.Search || []).length === 0 ? (
             <p>No movies found for this search in the current year.</p>
@@ -66,7 +69,7 @@ function HomePage() {
         <h1>Recommended for you</h1>
 
         <div
-          className={`grid px-4 ${profileMenu ? "grid-cols-6 gap-1" : "grid-cols-7 gap-3"}`}
+          className={`grid px-4 ${showDetails ? "grid-cols-4 gap-1" : profileMenu ? "grid-cols-5 gap-1" : "grid-cols-7 gap-3"}`}
         >
           {(recommendedMovies?.Search || []).map((movie) => (
             <div

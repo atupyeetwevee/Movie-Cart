@@ -1,4 +1,4 @@
-import { useOutletContext, useParams } from "react-router-dom";
+// import { useOutletContext, useParams } from "react-router-dom";
 import { useMovieDetails } from "../hooks/useMovieDetails";
 import { LuX } from "react-icons/lu";
 
@@ -15,7 +15,7 @@ const MovieDetailsPage = ({ id, onClose }) => {
 
   return (
     <>
-      <div className={`flex gap-15 px-4 py-4 `}>
+      <div className="flex gap-15 border border-gray-500 rounded-4xl px-4 py-4">
         <div className="flex justify-end">
           <LuX onClick={onClose} size={24} />
         </div>

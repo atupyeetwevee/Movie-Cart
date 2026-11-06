@@ -25,7 +25,7 @@ function MoviesPage() {
   }
 
   return (
-    <div className="py-4 bg-amber-200">
+    <div className="py-4">
       <h1>Popular Movies</h1>
 
       <div
@@ -37,7 +37,7 @@ function MoviesPage() {
               key={movie.imdbID}
               onClick={() => handleViewMovie(movie.imdbID)}
               title={`${movie.Title} - ${movie.Year}`}
-              className="flex flex-col gap-3 px-2 pt-8 bg-red-300 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+              className="flex flex-col gap-3 px-2 pt-8 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
             >
               <img
                 className="object-cover h-full rounded-md border-2 border-white"
