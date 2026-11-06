@@ -33,7 +33,7 @@ function HomePage() {
   }
 
   return (
-    <>
+    <div className="border border-gray-600 rounded-2xl">
       <div className="">
         <h1>Trending</h1>
 
@@ -91,7 +91,7 @@ function HomePage() {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

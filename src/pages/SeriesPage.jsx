@@ -25,7 +25,7 @@ function SeriesPage() {
   }
 
   return (
-    <div className="">
+    <div className="border border-gray-600 rounded-2xl">
       <h1>Popular Series</h1>
 
       <div

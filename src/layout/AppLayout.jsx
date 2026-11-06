@@ -32,7 +32,7 @@ function AppLayout() {
             showSearch={showSearch}
           />
 
-          <div className="flex flex-1 min-w-0 overflow-x-hidden p-4">
+          <div className="flex flex-1 gap-5 min-w-0 overflow-x-hidden p-4">
             <div
               className={`${showDetails ? "w-1/2" : "w-full"} transition-all duration-500`}
             >
@@ -48,7 +48,7 @@ function AppLayout() {
               />
             </div>
             {showDetails && (
-              <div className="w-1/2  overflow-y-auto">
+              <div className="w-1/2 overflow-y-auto">
                 <MovieDetailsPage
                   id={selectedMovie}
                   onClose={() => setShowDetails(false)}
