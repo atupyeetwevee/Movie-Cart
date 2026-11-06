@@ -25,7 +25,7 @@ function MoviesPage() {
   }
 
   return (
-    <div className="py-4 border border-gray-600 rounded-2xl">
+    <div className="py-4">
       <h1>Popular Movies</h1>
 
       <div

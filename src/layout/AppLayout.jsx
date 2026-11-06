@@ -34,7 +34,7 @@ function AppLayout() {
 
           <div className="flex flex-1 gap-5 min-w-0 overflow-x-hidden p-4">
             <div
-              className={`${showDetails ? "w-1/2" : "w-full"} transition-all duration-500`}
+              className={`${showDetails ? "w-2/4" : "w-full"} transition-all duration-500`}
             >
               <Outlet
                 context={{
@@ -48,7 +48,7 @@ function AppLayout() {
               />
             </div>
             {showDetails && (
-              <div className="w-1/2 overflow-y-auto">
+              <div className="w-2/4 sticky right-0 overflow-y-auto">
                 <MovieDetailsPage
                   id={selectedMovie}
                   onClose={() => setShowDetails(false)}

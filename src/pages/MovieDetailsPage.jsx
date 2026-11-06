@@ -15,14 +15,15 @@ const MovieDetailsPage = ({ id, onClose }) => {
 
   return (
     <>
-      <div className="flex gap-15 border border-gray-600 rounded-2xl px-4 py-4">
-        <div className="flex justify-end">
-          <LuX onClick={onClose} size={24} />
-        </div>
-
-        <div className="md:w-1/4 ">
+      <div
+        className="flex gap-15 bg-cover bg-center border border-gray-600 rounded-2xl px-4 py-4"
+        style={{
+          backgroundImage: `url(${movie.Poster})`,
+        }}
+      >
+        {/* <div className="md:w-1/4 ">
           <img src={movie?.Poster} alt={movie?.Title} />
-        </div>
+        </div> */}
         <div className="md:w-3/4 flex flex-col gap-8 pt-5">
           <h1 className="md:text-4xl">{movie?.Title}</h1>
           <ul className="flex gap-8 md:text-2xl">
@@ -45,6 +46,10 @@ const MovieDetailsPage = ({ id, onClose }) => {
             <h2 className="md:text-3xl">CAST</h2>
             <p>{movie?.Actors}</p>
           </div>
+        </div>
+
+        <div className="flex justify-end">
+          <LuX onClick={onClose} size={24} />
         </div>
       </div>
     </>
