@@ -16,7 +16,7 @@ const MovieDetailsPage = ({ id, onClose }) => {
   return (
     <>
       <div
-        className="flex gap-15  px-4 py-4"
+        className="flex gap-15 bg-cover bg-center px-4 py-4"
         style={{
           backgroundImage: `url(${movie.Poster})`,
         }}
